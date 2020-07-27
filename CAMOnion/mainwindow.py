@@ -123,4 +123,5 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
                         text += f'- {entity}\n'
 
         self.info.setPlainText(text)
+        self.statusbar.showMessage(text)
 
