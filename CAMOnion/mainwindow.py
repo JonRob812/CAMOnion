@@ -32,6 +32,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self._visible_layers = None
         self._current_layout = None
 
+    def draw_circle(self):
+        pass
+
     def _select_doc(self):
         path, _ = qw.QFileDialog.getOpenFileName(self, caption='Select CAD Document', filter='DXF Documents (*.dxf)')
         if path:
@@ -45,6 +48,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self._populate_layouts()
         self._populate_layer_list()
         self.draw_layout('Model')
+        print('noth')
 
     def _populate_layer_list(self):
         self.layers.blockSignals(True)
