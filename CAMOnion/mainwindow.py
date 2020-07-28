@@ -24,7 +24,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.view.setScene(self.scene)
         self.view.scale(1, -1)  # so that +y is up
         self.view.element_selected.connect(self._on_element_selected)
-        self.actionOpen.triggered.connect(self._select_doc)
+        self.actionImport_DXF.triggered.connect(self._select_doc)
 
         self.renderer = PyQtBackend(self.scene)
         self.doc = None

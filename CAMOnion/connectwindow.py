@@ -4,6 +4,8 @@ from CAMOnion.ui.camo_connect_window_ui import Ui_Dialog
 
 
 class ConnectWindow(QDialog, Ui_Dialog):
+    new_db = QtCore.pyqtSignal(str)
+
     def __init__(self, controller):
         super().__init__()
         self.setWindowFlags(QtCore.Qt.WindowStaysOnTopHint)
@@ -16,9 +18,7 @@ class ConnectWindow(QDialog, Ui_Dialog):
         self.file_getter = None
 
     def set_db(self):
-        self.controller.db = self.user_input.text()
-        self.controller.settings.setValue('db', self.controller.db)
-        self.controller.setup_sql()
+        self.new_db.emit(self.user_input.text())
 
     def show_file_getter(self):
         path, _ = QFileDialog.getOpenFileName(self, caption='choose camo.db', filter='sqlite.db (*.db)')
@@ -27,14 +27,4 @@ class ConnectWindow(QDialog, Ui_Dialog):
             print(path)
 
 
-class Message(QMessageBox):
-    def __init__(self):
-        super(QMessageBox, self).__init__()
 
-
-def show_connect_error():
-    msg = Message()
-    msg.setWindowTitle('SQL error')
-    msg.setText('invalid credentials')
-    msg.setIcon(Message.Critical)
-    msg.exec_()

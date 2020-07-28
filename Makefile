@@ -2,7 +2,7 @@ APP = CAMOnion
 UI_SRC_DIR = designer
 
 RESOURCE_QRC = resources.qrc
-CAMO_RESOURCES = $(APP)/ui/camo_resources.py
+CAMO_RESOURCES = $(APP)/resources/camo_resources.py
 
 UI_SRC_FILES = $(wildcard $(UI_SRC_DIR)/*.ui)
 UI_FILES = $(patsubst $(UI_SRC_DIR)/%.ui, $(APP)/ui/%_ui.py, $(UI_SRC_FILES))
@@ -18,7 +18,7 @@ $(APP)/ui/%_ui.py: $(UI_SRC_DIR)/%.ui
 	rm -f $@
 	pyuic5 -o $@ $<
 
-.PHONY : resource
+.PHONY : resources
 resource: $(CAMO_RESOURCES)
 
 $(CAMO_RESOURCES) : $(RESOURCE_QRC)

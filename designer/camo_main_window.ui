@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>848</width>
-    <height>501</height>
+    <width>1070</width>
+    <height>604</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,7 +25,7 @@
       </property>
       <property name="minimumSize">
        <size>
-        <width>430</width>
+        <width>567</width>
         <height>0</height>
        </size>
       </property>
@@ -44,14 +44,15 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>848</width>
-     <height>20</height>
+     <width>1070</width>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuSettings">
     <property name="title">
      <string>Settings</string>
     </property>
+    <addaction name="actionSQL_Setup"/>
    </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
@@ -108,8 +109,8 @@
   <widget class="QDockWidget" name="dockWidget_2">
    <property name="minimumSize">
     <size>
-     <width>179</width>
-     <height>170</height>
+     <width>218</width>
+     <height>205</height>
     </size>
    </property>
    <property name="maximumSize">
@@ -312,6 +313,11 @@
   <action name="actionSQL_config">
    <property name="text">
     <string>SQL config</string>
+   </property>
+  </action>
+  <action name="actionSQL_Setup">
+   <property name="text">
+    <string>SQL Setup</string>
    </property>
   </action>
  </widget>

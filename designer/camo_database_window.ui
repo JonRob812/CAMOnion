@@ -26,10 +26,7 @@
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
-         <widget class="QListView" name="tool_list"/>
-        </item>
-        <item>
-         <widget class="QTableView" name="tableView"/>
+         <widget class="QListWidget" name="tool_list_widget"/>
         </item>
         <item>
          <widget class="QFrame" name="frame">
@@ -50,6 +47,9 @@
              </property>
             </widget>
            </item>
+           <item row="1" column="1">
+            <widget class="QLineEdit" name="lineEdit"/>
+           </item>
            <item row="5" column="0">
             <widget class="QLabel" name="label_3">
              <property name="text">
@@ -57,47 +57,14 @@
              </property>
             </widget>
            </item>
-           <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
-           </item>
            <item row="0" column="1">
             <widget class="QLineEdit" name="diameter_input"/>
            </item>
-           <item row="1" column="6">
-            <widget class="QLineEdit" name="qb_id_input"/>
-           </item>
-           <item row="5" column="6">
+           <item row="5" column="5">
             <widget class="QLineEdit" name="num_flutes_input"/>
            </item>
-           <item row="10" column="1">
-            <spacer name="verticalSpacer">
-             <property name="orientation">
-              <enum>Qt::Vertical</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>20</width>
-               <height>40</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item row="8" column="6">
-            <widget class="QPushButton" name="add_tool_button">
-             <property name="text">
-              <string>Add</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="1">
-            <widget class="QLineEdit" name="tap_pitch_input"/>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Name</string>
-             </property>
-            </widget>
+           <item row="1" column="5">
+            <widget class="QLineEdit" name="qb_id_input"/>
            </item>
            <item row="0" column="2">
             <widget class="QLabel" name="label_2">
@@ -106,8 +73,32 @@
              </property>
             </widget>
            </item>
-           <item row="0" column="6">
+           <item row="6" column="1">
+            <widget class="QLineEdit" name="tap_pitch_input"/>
+           </item>
+           <item row="0" column="5">
             <widget class="QComboBox" name="op_type_combo"/>
+           </item>
+           <item row="8" column="5">
+            <widget class="QPushButton" name="add_tool_button">
+             <property name="text">
+              <string>Add</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Name</string>
+             </property>
+            </widget>
+           </item>
+           <item row="9" column="5">
+            <widget class="QPushButton" name="delete_tool_button">
+             <property name="text">
+              <string>Delete</string>
+             </property>
+            </widget>
            </item>
            <item row="1" column="2">
             <widget class="QLabel" name="label_5">
@@ -127,13 +118,6 @@
             <widget class="QLabel" name="label_7">
              <property name="text">
               <string>Tap Pitch</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="6">
-            <widget class="QPushButton" name="delete_tool_button">
-             <property name="text">
-              <string>Delete</string>
              </property>
             </widget>
            </item>
@@ -344,7 +328,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
+                <width>86</width>
                 <height>73</height>
                </rect>
               </property>
@@ -380,7 +364,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
+                <width>86</width>
                 <height>73</height>
                </rect>
               </property>
@@ -398,7 +382,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
+                <width>86</width>
                 <height>73</height>
                </rect>
               </property>
@@ -416,7 +400,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
+                <width>86</width>
                 <height>73</height>
                </rect>
               </property>
@@ -434,7 +418,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
+                <width>86</width>
                 <height>73</height>
                </rect>
               </property>
@@ -452,7 +436,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
+                <width>86</width>
                 <height>73</height>
                </rect>
               </property>
@@ -470,7 +454,7 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
+                <width>86</width>
                 <height>73</height>
                </rect>
               </property>
@@ -520,13 +504,6 @@
      <height>20</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuf">
-    <property name="title">
-     <string>...</string>
-    </property>
-    <addaction name="actionConnect"/>
-   </widget>
-   <addaction name="menuf"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionConnect">
