@@ -44,11 +44,14 @@ class Tool(Base):
     operations = relationship('Operation', back_populates='tool')
 
 
-
 class Tool_Type(Base):
     __tablename__ = 'tool_types'
     id = Column(Integer, primary_key=True)
     tool_type = Column(String)
+    tools = relationship("Tool", back_populates='_type')
+
+
+Tool._type = relationship('Tool_Type', back_populates='tools')
 
 
 class Feature(Base):

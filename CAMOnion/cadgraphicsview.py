@@ -74,6 +74,7 @@ class CADGraphicsViewWithOverlay(CADGraphicsView):
 
     def drawForeground(self, painter: qg.QPainter, rect: qc.QRectF) -> None:
         if self._current_item is not None:
+            # if self._current_item.
             r = self._current_item.boundingRect()
             r = self._current_item.sceneTransform().mapRect(r)
             painter.fillRect(r, qg.QColor(0, 255, 0, 100))

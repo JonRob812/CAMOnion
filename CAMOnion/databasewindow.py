@@ -1,4 +1,4 @@
-from PyQt5 import QtWidgets as qw
+from PyQt5 import QtWidgets as qw, QtCore as qc, QtGui
 
 from CAMOnion.ui.camo_database_window_ui import Ui_databaseWindow
 from CAMOnion.operationwindow import OperationWindow
@@ -7,6 +7,7 @@ from CAMOnion.database.db_utils import get_session
 
 
 class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
+
     def __init__(self, controller):
         super().__init__()
         self.controller = controller
@@ -17,6 +18,17 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
         self.dialog = None
         self.operation_window = None
         self.add_tool_button.clicked.connect(self.test)
+        self.tool_list_widget.doubleClicked.connect(self.tool_selected)
+
+    def tool_selected(self):
+        all_types = [self.tool_type_combo.itemText(i) for i in range(self.tool_type_combo.count())]
+        tool = self.tool_list_widget.selectedItems()[0].tool
+        print(tool)
+        self.diameter_input.setText(str(tool.diameter))
+        for i, _type in enumerate(all_types):
+            if _type == tool._type.tool_type:
+                self.tool_type_combo.setCurrentIndex(i)
+        print(self.tool_type_combo.currentText())
 
     def show_operation_window(self):
         self.operation_window = OperationWindow()
@@ -33,7 +45,9 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
         if not self.controller.tool_list:
             self.controller.test_db()
         for tool_type in self.controller.tool_list.types:
-            self.op_type_combo.addItem(tool_type.tool_type, tool_type)
+            self.tool_type_combo.addItem(tool_type.tool_type, tool_type)
+
+
 
     def test(self):
         index = self.op_type_combo.currentIndex()

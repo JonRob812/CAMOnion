@@ -77,7 +77,7 @@
             <widget class="QLineEdit" name="tap_pitch_input"/>
            </item>
            <item row="0" column="5">
-            <widget class="QComboBox" name="op_type_combo"/>
+            <widget class="QComboBox" name="tool_type_combo"/>
            </item>
            <item row="8" column="5">
             <widget class="QPushButton" name="add_tool_button">
@@ -246,8 +246,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>428</width>
-                <height>209</height>
+                <width>398</width>
+                <height>187</height>
                </rect>
               </property>
               <attribute name="label">
@@ -328,8 +328,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>86</width>
-                <height>73</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -346,8 +346,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>428</width>
-                <height>209</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -364,8 +364,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>86</width>
-                <height>73</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -382,8 +382,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>86</width>
-                <height>73</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -400,8 +400,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>86</width>
-                <height>73</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -418,8 +418,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>86</width>
-                <height>73</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -436,8 +436,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>86</width>
-                <height>73</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -454,8 +454,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>86</width>
-                <height>73</height>
+                <width>98</width>
+                <height>89</height>
                </rect>
               </property>
               <attribute name="label">
@@ -501,7 +501,7 @@
      <x>0</x>
      <y>0</y>
      <width>739</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

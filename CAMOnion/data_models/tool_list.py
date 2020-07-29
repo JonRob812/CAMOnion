@@ -9,7 +9,7 @@ class ToolList:
         self.refresh()
 
     def refresh(self):
-        self.tools = self.controller.session.query(Tool).all()
+        self.tools = self.controller.session.query(Tool).join(Tool_Type).all()
         self.types = self.controller.session.query(Tool_Type).all()
 
     def add(self, diameter, tool_number, tool_type_id, name=None, qb_id=None, num_flutes=0, pitch=0):
