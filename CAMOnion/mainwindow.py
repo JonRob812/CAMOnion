@@ -25,6 +25,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.view.scale(1, -1)  # so that +y is up
         self.view.element_selected.connect(self._on_element_selected)
         self.actionImport_DXF.triggered.connect(self._select_doc)
+        self.actionPost.triggered.connect(self.post)
 
         self.renderer = PyQtBackend(self.scene)
         self.doc = None
@@ -32,8 +33,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self._visible_layers = None
         self._current_layout = None
 
-    def draw_circle(self):
-        pass
+    def post(self):
+        for item in self.graphicsView.items():
+            print(item)
 
     def _select_doc(self):
         path, _ = qw.QFileDialog.getOpenFileName(self, caption='Select CAD Document', filter='DXF Documents (*.dxf)')
@@ -48,7 +50,6 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self._populate_layouts()
         self._populate_layer_list()
         self.draw_layout('Model')
-        print('noth')
 
     def _populate_layer_list(self):
         self.layers.blockSignals(True)
@@ -72,7 +73,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         print(f'drawing {layout_name}')
         self._current_layout = layout_name
         self.renderer.clear()
-        self.view.clear()
+        # self.view.clear()
         layout = self.doc.layout(layout_name)
         self._update_render_context(layout)
         Frontend(self._render_context, self.renderer).draw_layout(layout)
