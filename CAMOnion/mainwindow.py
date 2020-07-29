@@ -12,6 +12,7 @@ from ezdxf.addons.drawing import Frontend, RenderContext
 from ezdxf.addons.drawing.pyqt import _get_x_scale, PyQtBackend, CorrespondingDXFEntity, \
     CorrespondingDXFEntityStack
 from ezdxf.drawing import Drawing
+from ezdxf.addons import Importer
 
 
 class MainWindow(qw.QMainWindow, Ui_MainWindow):
@@ -24,7 +25,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.view.setScene(self.scene)
         self.view.scale(1, -1)  # so that +y is up
         self.view.element_selected.connect(self._on_element_selected)
-        self.actionImport_DXF.triggered.connect(self._select_doc)
+        self.actionImport_DXF.triggered.connect(self.import_dxf)
 
         self.renderer = PyQtBackend(self.scene)
         self.doc = None
@@ -32,13 +33,15 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self._visible_layers = None
         self._current_layout = None
 
-    def draw_circle(self):
-        pass
-
-    def _select_doc(self):
+    def import_dxf(self):
         path, _ = qw.QFileDialog.getOpenFileName(self, caption='Select CAD Document', filter='DXF Documents (*.dxf)')
         if path:
-            self.set_document(ezdxf.readfile(path, legacy_mode=True))
+            incoming_dxf = ezdxf.readfile(path)
+            importer = Importer(incoming_dxf, self.controller.current_camo_file.dxf_doc)
+            # import all entities from source modelspace into modelspace of the target drawing
+            importer.import_modelspace()
+            importer.finalize()
+            self.set_document(self.controller.current_camo_file.dxf_doc)
 
     def set_document(self, document: Drawing):
         self.doc = document
@@ -48,7 +51,6 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self._populate_layouts()
         self._populate_layer_list()
         self.draw_layout('Model')
-        print('noth')
 
     def _populate_layer_list(self):
         self.layers.blockSignals(True)
