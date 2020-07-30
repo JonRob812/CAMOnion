@@ -21,7 +21,7 @@ class SqliteNumeric(types.TypeDecorator):
         return str(value)
 
     def process_result_value(self, value, dialect):
-        return D(value)
+        return round(D(value), 5)
 
 
 # can overwrite the imported type name
@@ -42,24 +42,31 @@ class Tool(Base):
     pitch = Column(Numeric)
 
     operations = relationship('Operation', back_populates='tool')
+    tool_type = relationship('Tool_Type', back_populates='tools')
 
 
 class Tool_Type(Base):
     __tablename__ = 'tool_types'
     id = Column(Integer, primary_key=True)
     tool_type = Column(String)
-    tools = relationship("Tool", back_populates='_type')
-
-
-Tool._type = relationship('Tool_Type', back_populates='tools')
+    tools = relationship("Tool", back_populates='tool_type')
 
 
 class Feature(Base):
     __tablename__ = 'features'
-    name = Column(String, primary_key=True)
+    name = Column(String, unique=True)
     id = Column(Integer, primary_key=True)
     description = Column(String)
     operations = relationship('Operation', back_populates='feature')
+    feature_type_id = Column(Integer, ForeignKey('feature_types.id'))
+    feature_type = relationship('Feature_Type', back_populates='features')
+
+
+class Feature_Type(Base):
+    __tablename__ = 'feature_types'
+    id = Column(Integer, primary_key=True)
+    feature_type = Column(String, unique=True)
+    features = relationship('Feature', back_populates='feature_type')
 
 
 class Operation(Base):

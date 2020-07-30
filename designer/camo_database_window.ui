@@ -37,18 +37,15 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout_2">
-           <item row="5" column="1">
-            <widget class="QLineEdit" name="lineEdit_2"/>
-           </item>
-           <item row="0" column="0">
-            <widget class="QLabel" name="label_4">
+           <item row="9" column="5">
+            <widget class="QPushButton" name="apply_changes_tool_button">
              <property name="text">
-              <string>Diameter</string>
+              <string>Apply Changes</string>
              </property>
             </widget>
            </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit"/>
+            <widget class="QLineEdit" name="tool_name_input"/>
            </item>
            <item row="5" column="0">
             <widget class="QLabel" name="label_3">
@@ -57,19 +54,16 @@
              </property>
             </widget>
            </item>
+           <item row="5" column="1">
+            <widget class="QLineEdit" name="tool_number_input"/>
+           </item>
            <item row="0" column="1">
             <widget class="QLineEdit" name="diameter_input"/>
            </item>
-           <item row="5" column="5">
-            <widget class="QLineEdit" name="num_flutes_input"/>
-           </item>
-           <item row="1" column="5">
-            <widget class="QLineEdit" name="qb_id_input"/>
-           </item>
-           <item row="0" column="2">
-            <widget class="QLabel" name="label_2">
+           <item row="0" column="0">
+            <widget class="QLabel" name="label_4">
              <property name="text">
-              <string>Type</string>
+              <string>Diameter</string>
              </property>
             </widget>
            </item>
@@ -79,21 +73,20 @@
            <item row="0" column="5">
             <widget class="QComboBox" name="tool_type_combo"/>
            </item>
-           <item row="8" column="5">
-            <widget class="QPushButton" name="add_tool_button">
+           <item row="1" column="5">
+            <widget class="QLineEdit" name="qb_id_input"/>
+           </item>
+           <item row="5" column="5">
+            <widget class="QLineEdit" name="num_flutes_input"/>
+           </item>
+           <item row="0" column="2">
+            <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>Add</string>
+              <string>Type</string>
              </property>
             </widget>
            </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label">
-             <property name="text">
-              <string>Name</string>
-             </property>
-            </widget>
-           </item>
-           <item row="9" column="5">
+           <item row="10" column="5">
             <widget class="QPushButton" name="delete_tool_button">
              <property name="text">
               <string>Delete</string>
@@ -114,6 +107,20 @@
              </property>
             </widget>
            </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label">
+             <property name="text">
+              <string>Name</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="5">
+            <widget class="QPushButton" name="add_tool_button">
+             <property name="text">
+              <string>Add</string>
+             </property>
+            </widget>
+           </item>
            <item row="6" column="0">
             <widget class="QLabel" name="label_7">
              <property name="text">
@@ -131,9 +138,6 @@
         <string>Features</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="0" rowspan="3">
-         <widget class="QListView" name="listView_2"/>
-        </item>
         <item row="0" column="1">
          <widget class="QFrame" name="frame_2">
           <property name="frameShape">
@@ -143,37 +147,30 @@
            <enum>QFrame::Raised</enum>
           </property>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="2" column="1">
-            <widget class="QLineEdit" name="lineEdit_8"/>
-           </item>
            <item row="1" column="1">
-            <widget class="QLineEdit" name="lineEdit_7"/>
+            <widget class="QLineEdit" name="feature_name_input"/>
+           </item>
+           <item row="2" column="1">
+            <widget class="QLineEdit" name="feature_desc_input"/>
+           </item>
+           <item row="5" column="2">
+            <widget class="QPushButton" name="add_feature_button">
+             <property name="text">
+              <string>Add</string>
+             </property>
+            </widget>
+           </item>
+           <item row="7" column="2">
+            <widget class="QPushButton" name="delete_feature_button">
+             <property name="text">
+              <string>Delete</string>
+             </property>
+            </widget>
            </item>
            <item row="2" column="0">
             <widget class="QLabel" name="label_10">
              <property name="text">
               <string>Desc</string>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>Name</string>
-             </property>
-            </widget>
-           </item>
-           <item row="6" column="2">
-            <widget class="QPushButton" name="pushButton_4">
-             <property name="text">
-              <string>Remove</string>
-             </property>
-            </widget>
-           </item>
-           <item row="5" column="2">
-            <widget class="QPushButton" name="pushButton_3">
-             <property name="text">
-              <string>Add</string>
              </property>
             </widget>
            </item>
@@ -184,8 +181,22 @@
              </property>
             </widget>
            </item>
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Name</string>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="1">
-            <widget class="QComboBox" name="comboBox_2"/>
+            <widget class="QComboBox" name="feature_type_combo"/>
+           </item>
+           <item row="6" column="2">
+            <widget class="QPushButton" name="apply_feature_changes_button">
+             <property name="text">
+              <string>Apply Changes</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </widget>
@@ -211,10 +222,10 @@
             </widget>
            </item>
            <item row="3" column="0" colspan="4">
-            <widget class="QListView" name="listView_3"/>
+            <widget class="QListView" name="feature_op_list"/>
            </item>
            <item row="0" column="2">
-            <widget class="QToolButton" name="toolButton_3">
+            <widget class="QToolButton" name="edit_op_button">
              <property name="text">
               <string>Edit</string>
              </property>
@@ -222,6 +233,9 @@
            </item>
           </layout>
          </widget>
+        </item>
+        <item row="0" column="0" rowspan="3">
+         <widget class="QListWidget" name="feature_list"/>
         </item>
        </layout>
       </widget>
@@ -512,6 +526,47 @@
    </property>
   </action>
  </widget>
+ <tabstops>
+  <tabstop>diameter_input</tabstop>
+  <tabstop>tool_type_combo</tabstop>
+  <tabstop>tool_name_input</tabstop>
+  <tabstop>qb_id_input</tabstop>
+  <tabstop>tool_number_input</tabstop>
+  <tabstop>num_flutes_input</tabstop>
+  <tabstop>tap_pitch_input</tabstop>
+  <tabstop>add_tool_button</tabstop>
+  <tabstop>apply_changes_tool_button</tabstop>
+  <tabstop>delete_tool_button</tabstop>
+  <tabstop>feature_list</tabstop>
+  <tabstop>feature_type_combo</tabstop>
+  <tabstop>feature_name_input</tabstop>
+  <tabstop>feature_desc_input</tabstop>
+  <tabstop>add_feature_button</tabstop>
+  <tabstop>delete_feature_button</tabstop>
+  <tabstop>add_op_button</tabstop>
+  <tabstop>delete_op_button</tabstop>
+  <tabstop>edit_op_button</tabstop>
+  <tabstop>feature_op_list</tabstop>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>tool_list_widget</tabstop>
+  <tabstop>lineEdit_10</tabstop>
+  <tabstop>lineEdit_11</tabstop>
+  <tabstop>lineEdit_13</tabstop>
+  <tabstop>lineEdit_12</tabstop>
+  <tabstop>lineEdit_14</tabstop>
+  <tabstop>lineEdit_9</tabstop>
+  <tabstop>textEdit</tabstop>
+  <tabstop>textEdit_2</tabstop>
+  <tabstop>textEdit_3</tabstop>
+  <tabstop>textEdit_4</tabstop>
+  <tabstop>textEdit_5</tabstop>
+  <tabstop>textEdit_6</tabstop>
+  <tabstop>textEdit_7</tabstop>
+  <tabstop>textEdit_8</tabstop>
+  <tabstop>toolButton_5</tabstop>
+  <tabstop>toolButton_4</tabstop>
+  <tabstop>listView_4</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
