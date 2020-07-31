@@ -221,15 +221,8 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="0" colspan="4">
-            <widget class="QListView" name="feature_op_list"/>
-           </item>
-           <item row="0" column="2">
-            <widget class="QToolButton" name="edit_op_button">
-             <property name="text">
-              <string>Edit</string>
-             </property>
-            </widget>
+           <item row="3" column="0" colspan="3">
+            <widget class="QListWidget" name="feature_op_list"/>
            </item>
           </layout>
          </widget>
@@ -250,6 +243,30 @@
            <string/>
           </property>
           <layout class="QGridLayout" name="gridLayout_7">
+           <item row="2" column="1">
+            <widget class="QToolButton" name="remove_machine_button">
+             <property name="text">
+              <string>Remove</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0">
+            <widget class="QToolButton" name="add_machine_button">
+             <property name="text">
+              <string>Add</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0" rowspan="2" colspan="3">
+            <widget class="QListWidget" name="machine_list"/>
+           </item>
+           <item row="2" column="2">
+            <widget class="QToolButton" name="edit_machine_button">
+             <property name="text">
+              <string>Apply Changes</string>
+             </property>
+            </widget>
+           </item>
            <item row="0" column="3">
             <widget class="QToolBox" name="toolBox">
              <property name="currentIndex">
@@ -260,8 +277,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>398</width>
-                <height>187</height>
+                <width>473</width>
+                <height>245</height>
                </rect>
               </property>
               <attribute name="label">
@@ -276,7 +293,7 @@
                 </widget>
                </item>
                <item row="1" column="1">
-                <widget class="QLineEdit" name="lineEdit_10"/>
+                <widget class="QLineEdit" name="mach_rpm"/>
                </item>
                <item row="3" column="0">
                 <widget class="QLabel" name="label_13">
@@ -293,32 +310,32 @@
                 </widget>
                </item>
                <item row="3" column="1">
-                <widget class="QLineEdit" name="lineEdit_11"/>
+                <widget class="QLineEdit" name="mach_spot"/>
                </item>
-               <item row="5" column="0">
+               <item row="6" column="0">
                 <widget class="QLabel" name="label_14">
                  <property name="text">
                   <string>Peck</string>
                  </property>
                 </widget>
                </item>
-               <item row="4" column="0">
+               <item row="5" column="0">
                 <widget class="QLabel" name="label_15">
                  <property name="text">
                   <string>Tap</string>
                  </property>
                 </widget>
                </item>
-               <item row="4" column="1">
-                <widget class="QLineEdit" name="lineEdit_13"/>
-               </item>
                <item row="5" column="1">
-                <widget class="QLineEdit" name="lineEdit_12"/>
+                <widget class="QLineEdit" name="mach_tap"/>
                </item>
                <item row="6" column="1">
-                <widget class="QLineEdit" name="lineEdit_14"/>
+                <widget class="QLineEdit" name="mach_peck"/>
                </item>
-               <item row="6" column="0">
+               <item row="8" column="1">
+                <widget class="QLineEdit" name="mach_ream"/>
+               </item>
+               <item row="8" column="0">
                 <widget class="QLabel" name="label_16">
                  <property name="text">
                   <string>Ream</string>
@@ -326,12 +343,32 @@
                 </widget>
                </item>
                <item row="0" column="1">
-                <widget class="QLineEdit" name="lineEdit_9"/>
+                <widget class="QLineEdit" name="mach_name"/>
                </item>
                <item row="0" column="0">
                 <widget class="QLabel" name="label_11">
                  <property name="text">
                   <string>Name</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QLineEdit" name="mach_drill"/>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>Drill</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1">
+                <widget class="QLineEdit" name="mach_countersink"/>
+               </item>
+               <item row="9" column="0">
+                <widget class="QLabel" name="label_19">
+                 <property name="text">
+                  <string>CSink</string>
                  </property>
                 </widget>
                </item>
@@ -342,8 +379,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>89</height>
+                <width>490</width>
+                <height>190</height>
                </rect>
               </property>
               <attribute name="label">
@@ -351,7 +388,7 @@
               </attribute>
               <layout class="QVBoxLayout" name="verticalLayout">
                <item>
-                <widget class="QTextEdit" name="textEdit"/>
+                <widget class="QTextEdit" name="mach_program_start"/>
                </item>
               </layout>
              </widget>
@@ -360,8 +397,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>89</height>
+                <width>490</width>
+                <height>190</height>
                </rect>
               </property>
               <attribute name="label">
@@ -369,7 +406,7 @@
               </attribute>
               <layout class="QVBoxLayout" name="verticalLayout_3">
                <item>
-                <widget class="QTextEdit" name="textEdit_2"/>
+                <widget class="QTextEdit" name="mach_tool_start"/>
                </item>
               </layout>
              </widget>
@@ -378,8 +415,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>89</height>
+                <width>490</width>
+                <height>190</height>
                </rect>
               </property>
               <attribute name="label">
@@ -387,7 +424,7 @@
               </attribute>
               <layout class="QVBoxLayout" name="verticalLayout_4">
                <item>
-                <widget class="QTextEdit" name="textEdit_3"/>
+                <widget class="QTextEdit" name="mach_op_start"/>
                </item>
               </layout>
              </widget>
@@ -396,8 +433,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>89</height>
+                <width>490</width>
+                <height>190</height>
                </rect>
               </property>
               <attribute name="label">
@@ -405,25 +442,7 @@
               </attribute>
               <layout class="QVBoxLayout" name="verticalLayout_5">
                <item>
-                <widget class="QTextEdit" name="textEdit_4"/>
-               </item>
-              </layout>
-             </widget>
-             <widget class="QWidget" name="page_6">
-              <property name="geometry">
-               <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>98</width>
-                <height>89</height>
-               </rect>
-              </property>
-              <attribute name="label">
-               <string>Op End</string>
-              </attribute>
-              <layout class="QVBoxLayout" name="verticalLayout_6">
-               <item>
-                <widget class="QTextEdit" name="textEdit_5"/>
+                <widget class="QTextEdit" name="mach_tool_end"/>
                </item>
               </layout>
              </widget>
@@ -432,8 +451,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>89</height>
+                <width>490</width>
+                <height>190</height>
                </rect>
               </property>
               <attribute name="label">
@@ -441,7 +460,7 @@
               </attribute>
               <layout class="QVBoxLayout" name="verticalLayout_7">
                <item>
-                <widget class="QTextEdit" name="textEdit_6"/>
+                <widget class="QTextEdit" name="mach_program_end"/>
                </item>
               </layout>
              </widget>
@@ -450,8 +469,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>89</height>
+                <width>490</width>
+                <height>190</height>
                </rect>
               </property>
               <attribute name="label">
@@ -459,7 +478,7 @@
               </attribute>
               <layout class="QVBoxLayout" name="verticalLayout_8">
                <item>
-                <widget class="QTextEdit" name="textEdit_7"/>
+                <widget class="QTextEdit" name="mach_drill_format"/>
                </item>
               </layout>
              </widget>
@@ -468,8 +487,8 @@
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>89</height>
+                <width>490</width>
+                <height>190</height>
                </rect>
               </property>
               <attribute name="label">
@@ -477,28 +496,11 @@
               </attribute>
               <layout class="QVBoxLayout" name="verticalLayout_9">
                <item>
-                <widget class="QTextEdit" name="textEdit_8"/>
+                <widget class="QTextEdit" name="mach_tap_format"/>
                </item>
               </layout>
              </widget>
             </widget>
-           </item>
-           <item row="2" column="0">
-            <widget class="QToolButton" name="toolButton_5">
-             <property name="text">
-              <string>Add</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="1">
-            <widget class="QToolButton" name="toolButton_4">
-             <property name="text">
-              <string>Remove</string>
-             </property>
-            </widget>
-           </item>
-           <item row="0" column="0" rowspan="2" colspan="3">
-            <widget class="QListView" name="listView_4"/>
            </item>
           </layout>
          </widget>
@@ -537,35 +539,37 @@
   <tabstop>add_tool_button</tabstop>
   <tabstop>apply_changes_tool_button</tabstop>
   <tabstop>delete_tool_button</tabstop>
+  <tabstop>tool_list_widget</tabstop>
   <tabstop>feature_list</tabstop>
   <tabstop>feature_type_combo</tabstop>
   <tabstop>feature_name_input</tabstop>
   <tabstop>feature_desc_input</tabstop>
   <tabstop>add_feature_button</tabstop>
+  <tabstop>apply_feature_changes_button</tabstop>
   <tabstop>delete_feature_button</tabstop>
+  <tabstop>feature_op_list</tabstop>
   <tabstop>add_op_button</tabstop>
   <tabstop>delete_op_button</tabstop>
-  <tabstop>edit_op_button</tabstop>
-  <tabstop>feature_op_list</tabstop>
+  <tabstop>machine_list</tabstop>
+  <tabstop>mach_name</tabstop>
+  <tabstop>mach_rpm</tabstop>
+  <tabstop>mach_spot</tabstop>
+  <tabstop>mach_drill</tabstop>
+  <tabstop>mach_tap</tabstop>
+  <tabstop>mach_peck</tabstop>
+  <tabstop>mach_ream</tabstop>
+  <tabstop>mach_countersink</tabstop>
+  <tabstop>mach_program_start</tabstop>
+  <tabstop>mach_tool_start</tabstop>
+  <tabstop>mach_op_start</tabstop>
+  <tabstop>mach_tool_end</tabstop>
+  <tabstop>mach_program_end</tabstop>
+  <tabstop>mach_drill_format</tabstop>
+  <tabstop>mach_tap_format</tabstop>
+  <tabstop>add_machine_button</tabstop>
+  <tabstop>remove_machine_button</tabstop>
+  <tabstop>edit_machine_button</tabstop>
   <tabstop>tabWidget</tabstop>
-  <tabstop>tool_list_widget</tabstop>
-  <tabstop>lineEdit_10</tabstop>
-  <tabstop>lineEdit_11</tabstop>
-  <tabstop>lineEdit_13</tabstop>
-  <tabstop>lineEdit_12</tabstop>
-  <tabstop>lineEdit_14</tabstop>
-  <tabstop>lineEdit_9</tabstop>
-  <tabstop>textEdit</tabstop>
-  <tabstop>textEdit_2</tabstop>
-  <tabstop>textEdit_3</tabstop>
-  <tabstop>textEdit_4</tabstop>
-  <tabstop>textEdit_5</tabstop>
-  <tabstop>textEdit_6</tabstop>
-  <tabstop>textEdit_7</tabstop>
-  <tabstop>textEdit_8</tabstop>
-  <tabstop>toolButton_5</tabstop>
-  <tabstop>toolButton_4</tabstop>
-  <tabstop>listView_4</tabstop>
  </tabstops>
  <resources/>
  <connections/>

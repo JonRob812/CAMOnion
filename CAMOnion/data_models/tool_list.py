@@ -46,6 +46,8 @@ class ToolList:
     @staticmethod
     def get_valid_tool_dict(dia, num, t_id, name, qb_id, flutes, pitch):
         try:
+            if pitch == '':
+                pitch = 0
             tool_dict = {'diameter': dia,
                          'tool_number': num,
                          'tool_type_id': t_id,

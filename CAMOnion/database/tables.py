@@ -67,6 +67,7 @@ class Feature_Type(Base):
     id = Column(Integer, primary_key=True)
     feature_type = Column(String, unique=True)
     features = relationship('Feature', back_populates='feature_type')
+    camo_ops = relationship('CamoOp', back_populates='feature_type')
 
 
 class Operation(Base):
@@ -82,9 +83,9 @@ class Operation(Base):
     camo_op_id = Column(Integer, ForeignKey('camo_ops.id'))
     camo_op = relationship('CamoOp', back_populates='operations')
 
-    peck = Column(DECIMAL)
-    feed = Column(DECIMAL)
-    speed = Column(DECIMAL)
+    peck = Column(Numeric)
+    feed = Column(Numeric)
+    speed = Column(Numeric)
 
 
 class CamoOp(Base):
@@ -92,7 +93,9 @@ class CamoOp(Base):
     id = Column(Integer, primary_key=True)
     op_type = Column(String)
     function = Column(String)
-    priority = Column(DECIMAL)
+    priority = Column(Numeric)
+    feature_type_id = Column(Integer, ForeignKey('feature_types.id'))
+    feature_type = relationship('Feature_Type', back_populates='camo_ops')
     operations = relationship('Operation', back_populates='camo_op')
 
 
@@ -106,6 +109,7 @@ class Machine(Base):
     tap = Column(String)
     peck = Column(String)
     ream = Column(String)
+    countersink = Column(String)
     drill_format = Column(String)
     tap_format = Column(String)
     program_start = Column(String)
@@ -113,4 +117,3 @@ class Machine(Base):
     tool_start = Column(String)
     tool_end = Column(String)
     op_start = Column(String)
-    op_end = Column(String)

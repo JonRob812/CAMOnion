@@ -1,7 +1,5 @@
 from CAMOnion.database.tables import *
 
-import sys
-
 
 class FeatureList:
     def __init__(self, controller):

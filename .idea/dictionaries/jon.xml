@@ -2,6 +2,8 @@
   <dictionary name="jon">
     <words>
       <w>camo</w>
+      <w>feedrate</w>
+      <w>sfpm</w>
       <w>tablename</w>
     </words>
   </dictionary>

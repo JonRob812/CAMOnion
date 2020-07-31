@@ -22,7 +22,7 @@
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QTableWidget" name="tableWidget"/>
+        <widget class="QListWidget" name="op_tool_list"/>
        </item>
       </layout>
      </widget>
@@ -55,10 +55,10 @@
         </widget>
        </item>
        <item row="2" column="1">
-        <widget class="QLineEdit" name="lineEdit_2"/>
+        <widget class="QLineEdit" name="feed_rate_input"/>
        </item>
        <item row="0" column="1">
-        <widget class="QComboBox" name="comboBox"/>
+        <widget class="QComboBox" name="op_type_combo"/>
        </item>
        <item row="2" column="0">
         <widget class="QLabel" name="label_3">
@@ -68,7 +68,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="lineEdit"/>
+        <widget class="QLineEdit" name="rpm_input"/>
        </item>
        <item row="1" column="0">
         <widget class="QLabel" name="label_2">
@@ -78,7 +78,7 @@
         </widget>
        </item>
        <item row="3" column="1">
-        <widget class="QLineEdit" name="lineEdit_3"/>
+        <widget class="QLineEdit" name="peck_input"/>
        </item>
        <item row="4" column="1">
         <widget class="QGroupBox" name="groupBox_3">
@@ -87,17 +87,17 @@
          </property>
          <layout class="QGridLayout" name="gridLayout">
           <item row="2" column="1">
-           <widget class="QToolButton" name="toolButton_2">
+           <widget class="QToolButton" name="set_feedrate_buuton">
             <property name="text">
              <string>Set Feed Rate</string>
             </property>
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QLineEdit" name="lineEdit_4"/>
+           <widget class="QLineEdit" name="sfpm_input"/>
           </item>
           <item row="1" column="1">
-           <widget class="QLineEdit" name="lineEdit_5"/>
+           <widget class="QLineEdit" name="feed_input"/>
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="label_6">
@@ -114,7 +114,7 @@
            </widget>
           </item>
           <item row="2" column="0">
-           <widget class="QToolButton" name="toolButton">
+           <widget class="QToolButton" name="set_rpm_button">
             <property name="text">
              <string>Set RPM</string>
             </property>
@@ -147,7 +147,7 @@
      <x>0</x>
      <y>0</y>
      <width>606</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
