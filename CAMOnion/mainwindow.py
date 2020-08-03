@@ -6,6 +6,7 @@ from typing import Optional
 
 from PyQt5 import QtWidgets as qw, QtCore as qc, QtGui as qg
 from CAMOnion.ui.camo_main_window_ui import Ui_MainWindow
+from CAMOnion.dialogs.origindialog import OriginDialog
 
 import ezdxf
 from ezdxf.addons.drawing import Frontend, RenderContext
@@ -26,12 +27,27 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.view.scale(1, -1)  # so that +y is up
         self.view.element_selected.connect(self._on_element_selected)
         self.actionImport_DXF.triggered.connect(self.import_dxf)
+        self.actionNew_Origin.triggered.connect(self.show_origin_dialog)
+
+        self.origin_dialog = None
 
         self.renderer = PyQtBackend(self.scene)
         self.doc = None
         self._render_context = None
         self._visible_layers = None
         self._current_layout = None
+
+    def show_origin_dialog(self):
+        self.origin_dialog = OriginDialog()
+        self.graphicsView.view_clicked.connect(self.x_text)
+        self.origin_dialog.show()
+
+    def x_text(self, event):
+        print('event', event)
+        self.origin_dialog.origin_x.setText(str(event.pos()))
+        self.origin_dialog.showNormal()
+        # x = OriginDialog()
+        # x.showNormal()
 
     def import_dxf(self):
         path, _ = qw.QFileDialog.getOpenFileName(self, caption='Select CAD Document', filter='DXF Documents (*.dxf)')
@@ -115,6 +131,10 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             text += 'No element selected'
         else:
             dxf_entity = element.data(CorrespondingDXFEntity)
+
+            model = self.controller.main_window.treeView.model()
+            view = self.treeView
+
             if dxf_entity is None:
                 text += 'No data'
             else:
@@ -123,6 +143,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
                     text += f'- {key}: {value}\n'
 
                 dxf_entity_stack = element.data(CorrespondingDXFEntityStack)
+                view.setCurrentIndex(model.indexes[str(dxf_entity)])
                 if dxf_entity_stack:
                     text += '\nParents:\n'
                     for entity in reversed(dxf_entity_stack):
@@ -130,4 +151,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
         self.info.setPlainText(text)
         self.statusbar.showMessage(text)
+
+
+
 

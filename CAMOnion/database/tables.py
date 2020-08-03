@@ -44,6 +44,9 @@ class Tool(Base):
     operations = relationship('Operation', back_populates='tool')
     tool_type = relationship('Tool_Type', back_populates='tools')
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Tool_Type(Base):
     __tablename__ = 'tool_types'
@@ -97,6 +100,9 @@ class CamoOp(Base):
     feature_type_id = Column(Integer, ForeignKey('feature_types.id'))
     feature_type = relationship('Feature_Type', back_populates='camo_ops')
     operations = relationship('Operation', back_populates='camo_op')
+
+    def __str__(self):
+        return {self.op_type}
 
 
 class Machine(Base):

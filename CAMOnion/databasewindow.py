@@ -31,11 +31,13 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
         self.add_feature_button.clicked.connect(self.add_feature)
         self.delete_feature_button.clicked.connect(self.delete_feature)
         self.feature_op_list.doubleClicked.connect(self.selected_feature_op)
-        self.tool_list_widget.doubleClicked.connect(self.machine_selected)
+        self.tool_list_widget.doubleClicked.connect(self.tool_selected)
         self.machine_list.doubleClicked.connect(self.machine_selected)
         self.add_machine_button.clicked.connect(self.add_machine)
         self.remove_machine_button.clicked.connect(self.delete_machine)
         self.edit_machine_button.clicked.connect(self.edit_machine)
+
+
 
         self.editor_tool = None
         self.editor_feature = None
@@ -230,7 +232,10 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
             tools = self.controller.tool_list.tools
             sorted_tools = sorted(sorted(tools, key=lambda t: t.diameter), key=lambda t: t.tool_type.tool_type)
             for i, tool in enumerate(sorted_tools):
-                widget.addItem(ToolListWidgetItem(tool))
+                item = ToolListWidgetItem(tool)
+                if tool.tool_type.tool_type == 'Drill':
+                    item.setIcon(QtGui.QIcon(':img/drill.png'))
+                widget.addItem(item)
         widget.repaint()
 
     def populate_machine_list_widget(self):
@@ -364,9 +369,10 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
         self.operation_window.peck_input.setText(str(round(operation.peck, 4)))
         item_list = [self.operation_window.op_tool_list.item(i) for i in
                      range(self.operation_window.op_tool_list.count())]
-        for i, item in enumerate(item_list):
-            if item.tool.id == self.editor_op.tool.id:
-                self.operation_window.op_tool_list.setCurrentRow(self.operation_window.op_tool_list.row(item))
+        if self.editor_op.tool:
+            for i, item in enumerate(item_list):
+                if item.tool.id == self.editor_op.tool.id:
+                    self.operation_window.op_tool_list.setCurrentRow(self.operation_window.op_tool_list.row(item))
 
     def delete_feature_op(self):
         if self.feature_op_list.selectedItems():
@@ -378,21 +384,25 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
 class ToolListWidgetItem(qw.QListWidgetItem):
     def __init__(self, tool):
         self.tool = tool
-        self.string = f'T{self.tool.tool_number} - {self.tool.name} - {self.tool.diameter} - {self.tool.tool_type.tool_type}'
+        self.string = f'{self.tool.diameter:^12} - {self.tool.tool_type.tool_type:<18} - {self.tool.name:<25} - T{self.tool.tool_number:<3} '
         super().__init__(self.string)
 
 
 class FeatureListWidgetItem(qw.QListWidgetItem):
     def __init__(self, feature):
         self.feature = feature
-        self.string = f'{self.feature.feature_type.feature_type} - {self.feature.name}'
+        self.string = f'{self.feature.feature_type.feature_type:<15} - {self.feature.name:>15}'
         super().__init__(self.string)
 
 
 class FeatureOpListWidgetItem(qw.QListWidgetItem):
     def __init__(self, op):
         self.op = op
-        self.string = f'{self.op.camo_op.op_type} - {self.op.tool.name} - RPM: {round(self.op.speed)} Feed: {round(self.op.feed, 1)} Peck: {self.op.peck}'
+        if op.tool:
+            tool_name = op.tool.name
+        else:
+            tool_name = 'No Tool'
+        self.string = f'{self.op.camo_op.op_type} - {tool_name} - RPM: {round(self.op.speed)} Feed: {round(self.op.feed, 1)} Peck: {self.op.peck}'
         super().__init__(self.string)
 
 
@@ -401,3 +411,4 @@ class MachineListWidgetItem(qw.QListWidgetItem):
         self.machine = machine
         self.string = f'{machine.name}'
         super().__init__(self.string)
+

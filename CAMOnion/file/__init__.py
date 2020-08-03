@@ -10,9 +10,12 @@ class CamoFile:
         self.date_created = datetime.now()
         self.date_saved = None
 
-        self.geometry = []
+        self.setups = []
+        self.origins = []
         self.features = []
         self.operations = []
+        self.geometry = []
+
         self.dxf_imports = []
         self.dxf_doc = ezdxf.new(ezdxf.DXF2018)
 
@@ -28,6 +31,7 @@ def save(camo_file):
             camo_file.dxf_doc_encoded = camo_file.dxf_doc.encode_base64()
             del camo_file.dxf_doc
             pickle.dump(camo_file, file)
+            camo_file.dxf_doc = ezdxf.decode_base64(camo_file.dxf_doc_encoded)
 
 
 def open_camo_file(camo_file):
@@ -35,4 +39,5 @@ def open_camo_file(camo_file):
         camo_file = pickle.load(file)
         camo_file.dxf_doc = ezdxf.decode_base64(camo_file.dxf_doc_encoded)
         del camo_file.dxf_doc_encoded
+        msp = camo_file.dxf_doc.modelspace()
         return camo_file

@@ -2,6 +2,7 @@
   <dictionary name="jon">
     <words>
       <w>camo</w>
+      <w>columncount</w>
       <w>feedrate</w>
       <w>sfpm</w>
       <w>tablename</w>
