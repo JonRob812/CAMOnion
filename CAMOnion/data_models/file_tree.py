@@ -17,20 +17,16 @@ class FileTreeNode(object):
         self._row = 0
 
     def data(self, column):
-        print(f'calling node data column:{column}')
         if 0 <= column < len(self._data):
             return self._data[column]
 
     def columnCount(self):
-        print(self.data, 'node calling column count')
         return self._columncount
 
     def childCount(self):
-        print(self._data, 'node child count')
         return len(self._children)
 
     def child(self, row):
-        print(self._data, 'node child row', row)
         if 0 <= row < self.childCount():
             return self._children[row]
 
@@ -51,31 +47,35 @@ class FileTreeModel(QAbstractItemModel):
 
     def __init__(self, camo_file):
         super().__init__()
+        self.origin_index = None
+        self.setup_index = None
+        self.geo_index = None
         self.indexes = {}
 
         self._root = FileTreeNode(None)
-
+        origins_node = FileTreeNode('Origins')
         setups_node = FileTreeNode('Setups')
+        geo_node = FileTreeNode('Geometry')
 
         self._root.addChild(setups_node)
-
-        for i, setup in enumerate(camo_file.setups):
-            setups_node.addChild(setup)
-
-        geo_node = FileTreeNode('Geometry')
+        self._root.addChild(origins_node)
         self._root.addChild(geo_node)
-        msp = camo_file.dxf_doc.modelspace()
+
+        for origin in camo_file.origins:
+            origin_node = FileTreeNode((origin.name, origin))
+            origins_node.addChild(origin_node)
+
+        for setup in camo_file.setups:
+            setup_node = FileTreeNode((setup.name, setup))
+            setups_node.addChild(setup_node)
+
         geo_entities = camo_file.dxf_doc.modelspace().entity_space.entities
 
-        for i, entity in enumerate(geo_entities):
-            entity_node = FileTreeNode(str(entity))
-            entity_node.entity = entity
+        for entity in geo_entities:
+            entity_node = FileTreeNode((str(entity), entity))
             geo_node.addChild(entity_node)
-            # index = self.createIndex(entity_node.row(), 0, geo_node)
-            # print(index.data(), index.row())
 
     def index(self, row, column, parent_index=None):
-        print(f'calling index row{row}, col{column}, parent_index={parent_index}')
         if not parent_index:
             parent_index = QModelIndex()
         if not parent_index.isValid():
@@ -84,32 +84,27 @@ class FileTreeModel(QAbstractItemModel):
             parent = parent_index.internalPointer()
 
         if not QAbstractItemModel.hasIndex(self, row, column, parent_index):
-            print('return 1')
             return QModelIndex()
 
         if child := parent.child(row):
-            print('return 2')
             index = QAbstractItemModel.createIndex(self, row, column, child)
-            print(index.internalPointer())
             if 'Geometry' in child._data:
                 self.geo_index = index
+            if 'Setups' in child._data:
+                self.setup_index = index
             if hasattr(child, 'entity'):
                 self.indexes[str(child.entity)] = index
-
             return index
         else:
-            print('return 3')
             return QModelIndex()
 
     def parent(self, index):
-        print('parent called, index', index.internalPointer())
         if index.isValid():
             if p := index.internalPointer().parent():
                 return QAbstractItemModel.createIndex(self, p.row(), 0, p)
         return QModelIndex()
 
     def rowCount(self, parent_index=None):
-        print('index pointer', parent_index.internalPointer())
         if parent_index and parent_index.isValid():
             return parent_index.internalPointer().childCount()
         return self._root.childCount()
@@ -120,11 +115,9 @@ class FileTreeModel(QAbstractItemModel):
         return self._root.columnCount()
 
     def data(self, index=None, role=None):
-        print(f'calling data at treemodel index{index}, role={role}')
         if not index.isValid():
             return None
         node = index.internalPointer()
-        print(f'node{node}')
         if role == Qt.DisplayRole:
             return node.data(index.column())
         return None

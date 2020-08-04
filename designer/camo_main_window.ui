@@ -48,12 +48,6 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuSettings">
-    <property name="title">
-     <string>Settings</string>
-    </property>
-    <addaction name="actionSQL_Setup"/>
-   </widget>
    <widget class="QMenu" name="menuFile">
     <property name="title">
      <string>File</string>
@@ -63,16 +57,8 @@
     <addaction name="actionSave"/>
     <addaction name="actionSave_as"/>
     <addaction name="separator"/>
-    <addaction name="actionSet_Database"/>
-   </widget>
-   <widget class="QMenu" name="select_layout_menu">
-    <property name="title">
-     <string>Select Layout</string>
-    </property>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuSettings"/>
-   <addaction name="select_layout_menu"/>
   </widget>
   <widget class="QDockWidget" name="dockWidget">
    <property name="sizePolicy">

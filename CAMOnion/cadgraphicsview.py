@@ -12,13 +12,7 @@ from ezdxf.addons.drawing.pyqt import _get_x_scale, PyQtBackend, CorrespondingDX
 from ezdxf.drawing import Drawing
 
 
-# class CADGraphicsView(QGraphicsView):
-#     def __init__(self, parent=None):
-#         super(CADGraphicsView, self).__init__(parent)
-
-
 class CADGraphicsView(qw.QGraphicsView):
-    view_clicked = qc.pyqtSignal(qg.QMouseEvent)
 
     def __init__(self, view_buffer: float = 0.2):
         super().__init__()
@@ -27,12 +21,11 @@ class CADGraphicsView(qw.QGraphicsView):
         self._zoom_limits = (0.5, 100)
         self._view_buffer = view_buffer
 
-
         self.setTransformationAnchor(qw.QGraphicsView.AnchorUnderMouse)
         self.setResizeAnchor(qw.QGraphicsView.AnchorUnderMouse)
         self.setVerticalScrollBarPolicy(qc.Qt.ScrollBarAlwaysOff)
         self.setHorizontalScrollBarPolicy(qc.Qt.ScrollBarAlwaysOff)
-        # self.setDragMode(qw.QGraphicsView.ScrollHandDrag)
+        self.setDragMode(qw.QGraphicsView.ScrollHandDrag)
         self.setFrameShape(qw.QFrame.NoFrame)
         self.setRenderHints(qg.QPainter.Antialiasing | qg.QPainter.TextAntialiasing | qg.QPainter.SmoothPixmapTransform)
 
@@ -62,13 +55,10 @@ class CADGraphicsView(qw.QGraphicsView):
         self.scale(factor, factor)
         self._zoom *= factor
 
-    def mousePressEvent(self, event: qg.QMouseEvent) -> None:
-        print(event.pos())
-        self.view_clicked.emit(event)
-
 
 class CADGraphicsViewWithOverlay(CADGraphicsView):
     element_selected = qc.pyqtSignal(object, qc.QPointF)
+    graphics_view_clicked = qc.pyqtSignal(object)
 
     def __init__(self, parent=None):
         super().__init__()
@@ -94,3 +84,9 @@ class CADGraphicsViewWithOverlay(CADGraphicsView):
         # print(self.element_selected, pos)
         self.scene().invalidate(self.sceneRect(), qw.QGraphicsScene.ForegroundLayer)
         super().mouseMoveEvent(event)
+
+    def mousePressEvent(self, event: qg.QMouseEvent) -> None:
+        if self._current_item:
+            self.graphics_view_clicked.emit(self._current_item)
+        print(event.pos())
+        super().mousePressEvent(event)

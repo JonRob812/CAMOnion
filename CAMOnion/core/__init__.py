@@ -3,14 +3,15 @@ from CAMOnion.database.tables import *
 
 
 class Origin:
-    def __init__(self, x=0.0, y=0.0, angle=0.0):
+    def __init__(self, name, x=0.0, y=0.0, angle=0.0):
+        self.name = name
         self.x = x
         self.y = y
         self.angle = angle
 
 
 class Setup:
-    def __init__(self, name='New Setup', machine=None, origin=Origin()):
+    def __init__(self, name='New Setup', machine=None, origin=None):
         self.name = name
         self.origin = origin
         self.machine = machine

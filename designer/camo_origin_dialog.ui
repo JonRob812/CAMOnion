@@ -6,74 +6,39 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>360</width>
-    <height>113</height>
+    <width>269</width>
+    <height>87</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Set Origin</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <item>
-    <widget class="QFrame" name="frame">
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="5">
+    <widget class="QLineEdit" name="origin_y"/>
+   </item>
+   <item row="1" column="7">
+    <widget class="QToolButton" name="find_x">
+     <property name="text">
+      <string>...</string>
      </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>X Location</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1">
-       <widget class="QLineEdit" name="origin_x"/>
-      </item>
-      <item row="0" column="2">
-       <widget class="QToolButton" name="find_x">
-        <property name="text">
-         <string>...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="2">
-       <widget class="QToolButton" name="find_y">
-        <property name="text">
-         <string>...</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Y Location</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="origin_y"/>
-      </item>
-      <item row="3" column="1">
-       <spacer name="verticalSpacer">
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-     </layout>
     </widget>
    </item>
-   <item>
+   <item row="1" column="1">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>X Location</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Y Location</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="8" rowspan="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -82,6 +47,26 @@
       <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
+   </item>
+   <item row="1" column="5">
+    <widget class="QLineEdit" name="origin_x"/>
+   </item>
+   <item row="2" column="7">
+    <widget class="QToolButton" name="find_y">
+     <property name="text">
+      <string>...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="5">
+    <widget class="QLineEdit" name="origin_name_input"/>
    </item>
   </layout>
  </widget>
@@ -116,22 +101,6 @@
     <hint type="destinationlabel">
      <x>286</x>
      <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>find_x</sender>
-   <signal>clicked()</signal>
-   <receiver>Dialog</receiver>
-   <slot>showMinimized()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>247</x>
-     <y>28</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>179</x>
-     <y>56</y>
     </hint>
    </hints>
   </connection>

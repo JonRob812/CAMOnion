@@ -1,5 +1,5 @@
 from CAMOnion.database.tables import *
-
+from PyQt5.QtWidgets import QListWidgetItem
 
 class MachineList:
     def __init__(self, controller):
@@ -84,5 +84,18 @@ class MachineList:
             self.controller.session.commit()
             self.refresh()
 
+
+def populate_machine_combo_widget(widget, machine_list):
+    widget.clear()
+    for machine in machine_list.machines:
+        widget.addItem(MachineListWidgetItem(machine))
+    widget.repaint()
+
+
+class MachineListWidgetItem(QListWidgetItem):
+    def __init__(self, machine):
+        self.machine = machine
+        self.string = f'{machine.name}'
+        super().__init__(self.string)
 
 

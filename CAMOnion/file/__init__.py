@@ -1,6 +1,7 @@
 from datetime import datetime
 import pickle
 import ezdxf
+import copy
 
 
 class CamoFile:
@@ -24,14 +25,15 @@ class CamoFile:
         self.can_save = True
 
 
-def save(camo_file):
+def save_camo_file(camo_file):
     if camo_file.can_save:
         camo_file.date_saved = datetime.now()
         with open(camo_file.filename, 'wb') as file:
-            camo_file.dxf_doc_encoded = camo_file.dxf_doc.encode_base64()
-            del camo_file.dxf_doc
-            pickle.dump(camo_file, file)
-            camo_file.dxf_doc = ezdxf.decode_base64(camo_file.dxf_doc_encoded)
+            save_camo = copy.copy(camo_file)
+            save_camo.dxf_doc_encoded = save_camo.dxf_doc.encode_base64()
+            del save_camo.dxf_doc
+            pickle.dump(save_camo, file)
+            del save_camo
 
 
 def open_camo_file(camo_file):
@@ -39,5 +41,4 @@ def open_camo_file(camo_file):
         camo_file = pickle.load(file)
         camo_file.dxf_doc = ezdxf.decode_base64(camo_file.dxf_doc_encoded)
         del camo_file.dxf_doc_encoded
-        msp = camo_file.dxf_doc.modelspace()
         return camo_file
