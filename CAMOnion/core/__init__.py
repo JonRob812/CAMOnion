@@ -2,6 +2,15 @@
 from CAMOnion.database.tables import *
 
 
+class CamoItemTypes:
+    OOrigin = 0
+    OSetup = 1
+    OFeature = 2
+    OOp = 3
+    ODXF = 4
+
+
+
 class Origin:
     def __init__(self, name, x=0.0, y=0.0, angle=0.0):
         self.name = name
@@ -46,6 +55,8 @@ class PartOperation:
         self.base_id = base_id
         self.part_feature = part_feature
         self.tool = tool
+
+
 
 
 

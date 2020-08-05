@@ -1,8 +1,10 @@
 from CAMOnion.ui.camo_setup_dialog_ui import Ui_Dialog
 from PyQt5.QtWidgets import QDialog
+from PyQt5 import QtCore as qc
 
 
-class NewSetupDialog(QDialog, Ui_Dialog):
+class SetupDialog(QDialog, Ui_Dialog):
+
     def __init__(self, controller):
         super().__init__()
         self.setupUi(self)

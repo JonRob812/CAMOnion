@@ -9,10 +9,10 @@ from PyQt5 import QtWidgets as qw, QtCore as qc, QtGui as qg
 from CAMOnion.ui.camo_main_window_ui import Ui_MainWindow
 from CAMOnion.dialogs.origindialog import OriginDialog
 from CAMOnion.widgets.positionwidget import PositionWidget
-from CAMOnion.dialogs.newsetupdialog import NewSetupDialog
-from CAMOnion.dialogs.newfeaturedialog import NewFeatureDialog
+from CAMOnion.dialogs.setupdialog import SetupDialog
+from CAMOnion.dialogs.featuredialog import FeatureDialog
 
-from CAMOnion.core import Setup, Origin, PartFeature, PartOperation, CamoOp
+from CAMOnion.core import Setup, Origin, PartFeature, PartOperation, CamoOp, CamoItemTypes as ct
 
 import ezdxf
 from ezdxf.addons.drawing import Frontend, RenderContext
@@ -20,6 +20,8 @@ from ezdxf.addons.drawing.pyqt import PyQtBackend, CorrespondingDXFEntity, \
     CorrespondingDXFEntityStack
 from ezdxf.drawing import Drawing
 from ezdxf.addons import Importer
+
+from copy import copy
 
 
 class MainWindow(qw.QMainWindow, Ui_MainWindow):
@@ -36,22 +38,45 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.actionNew_Origin.triggered.connect(self.show_origin_dialog)
         self.actionNew_Setup.triggered.connect(self.show_new_setup_dialog)
         self.actionNew_Feature.triggered.connect(self.show_new_feature_dialog)
-
+        self.treeView.setContextMenuPolicy(qc.Qt.CustomContextMenu)
+        self.treeView.customContextMenuRequested.connect(self.show_r_click_tree_menu)
         self.position_widget = PositionWidget()
         self.statusbar.addWidget(self.position_widget)
         self.origin_dialog = None
-        self.new_setup_dialog = None
-        self.new_feature_dialog = None
+        self.setup_dialog = None
+        self.feature_dialog = None
+        self.tree_r_click_menu = None
         self.picker_axis = None
         self.all_dxf_entities = {}
         self.selected_dxf_entities = []
         self.model_space = None
+        self.right_click_point = None
+
+        self.editor_setup = None
 
         self.renderer = PyQtBackend(self.scene)
         self.doc = None
         self._render_context = None
         self._visible_layers = None
         self._current_layout = None
+
+    def show_r_click_tree_menu(self, point):
+        self.right_click_point = point
+        self.tree_r_click_menu = qw.QMenu()
+        edit_tree_item_action = qw.QAction('Edit', self)
+        edit_tree_item_action.triggered.connect(self.edit_tree_item)
+        delete_tree_item_action = qw.QAction('Delete', self)
+        self.tree_r_click_menu.addAction(edit_tree_item_action)
+        self.tree_r_click_menu.addAction(delete_tree_item_action)
+        self.tree_r_click_menu.exec(self.treeView.mapToGlobal(point))
+        print('rclick')
+
+    def edit_tree_item(self,):
+        index = self.treeView.indexAt(self.right_click_point)
+        node = index.internalPointer()
+        if node.type == ct.OSetup:
+            self.show_edit_setup_dialog(node._data[1])
+        print(node)
 
     def show_origin_dialog(self):
         self.origin_dialog = OriginDialog()
@@ -69,23 +94,47 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.controller.build_file_tree_model()
 
     def show_new_setup_dialog(self):
-        self.new_setup_dialog = NewSetupDialog(self.controller)
-        self.new_setup_dialog.buttonBox.accepted.connect(self.add_new_setup)
-        self.new_setup_dialog.show()
+        self.setup_dialog = SetupDialog(self.controller)
+        self.setup_dialog.buttonBox.accepted.connect(self.add_new_setup)
+        self.setup_dialog.show()
+
+    def show_edit_setup_dialog(self, setup):
+        self.setup_dialog = SetupDialog(self.controller)
+        self.editor_setup = setup
+        self.setup_dialog.buttonBox.accepted.connect(self.edit_setup)
+        self.setup_dialog.machine_combo.setCurrentIndex(self.setup_dialog.machine_combo.findText(setup.machine.name))
+        self.setup_dialog.origin_combo.setCurrentIndex(self.setup_dialog.origin_combo.findText(setup.origin.name))
+        self.setup_dialog.setup_name_input.setText(setup.name)
+        self.setup_dialog.show()
 
     def add_new_setup(self):
-        name = self.new_setup_dialog.setup_name_input.text()
-        machine = self.new_setup_dialog.machine_combo.itemData(self.new_setup_dialog.machine_combo.currentIndex())
-        origin = self.new_setup_dialog.origin_combo.itemData(self.new_setup_dialog.origin_combo.currentIndex())
+        name = self.setup_dialog.setup_name_input.text()
+        machine = self.setup_dialog.machine_combo.itemData(self.setup_dialog.machine_combo.currentIndex())
+        origin = self.setup_dialog.origin_combo.itemData(self.setup_dialog.origin_combo.currentIndex())
 
         setup = Setup(name, machine, origin)
         self.controller.current_camo_file.setups.append(setup)
         # self.controller.tree_model.layoutChanged.emit()
         self.controller.build_file_tree_model()
 
+    def edit_setup(self):
+        self.editor_setup.name = self.setup_dialog.setup_name_input.text()
+        self.editor_setup.machine = self.setup_dialog.machine_combo.itemData(self.setup_dialog.machine_combo.currentIndex())
+        self.editor_setup.origin = self.setup_dialog.origin_combo.itemData(self.setup_dialog.origin_combo.currentIndex())
+        self.controller.build_file_tree_model()
+
+    def add_feature(self):
+        pass
+
+    def edit_feature(self):
+        pass
+
+    def delete_tree_item(self):
+        pass
+
     def show_new_feature_dialog(self):
-        self.new_feature_dialog = NewFeatureDialog(self.controller)
-        self.new_feature_dialog.show()
+        self.feature_dialog = FeatureDialog(self.controller)
+        self.feature_dialog.show()
 
     def find_x(self):
         self.origin_dialog.hide()
@@ -116,6 +165,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             importer.import_modelspace()
             importer.finalize()
             self.set_document(self.controller.current_camo_file.dxf_doc)
+            self.controller.build_file_tree_model()
 
     def set_document(self, document: Drawing):
         self.doc = document

@@ -1,11 +1,12 @@
 from PyQt5.QtCore import QAbstractItemModel, QModelIndex, Qt
 import typing
 
+from CAMOnion.core import CamoItemTypes as ct
+
 
 class FileTreeNode(object):
     def __init__(self, data):
         self._data = data
-
         if type(data) == tuple:
             self._data = list(data)
         if type(data) is str or not hasattr(data, "__getitem__"):
@@ -15,6 +16,8 @@ class FileTreeNode(object):
         self._children = []
         self._parent = None
         self._row = 0
+
+        self.type = None
 
     def data(self, column):
         if 0 <= column < len(self._data):
@@ -42,6 +45,15 @@ class FileTreeNode(object):
         self._children.append(child)
         self._columncount = max(child.columnCount(), self._columncount)
 
+    def removeChild(self, position):
+        if position < 0 or position > len(self._children):
+            return False
+        child = self._children.pop(position)
+        child._parent = None
+        return True
+
+
+
 
 class FileTreeModel(QAbstractItemModel):
 
@@ -63,16 +75,19 @@ class FileTreeModel(QAbstractItemModel):
 
         for origin in camo_file.origins:
             origin_node = FileTreeNode((origin.name, origin))
+            origin_node.type = ct.OOrigin
             origins_node.addChild(origin_node)
 
         for setup in camo_file.setups:
             setup_node = FileTreeNode((setup.name, setup))
+            setup_node.type = ct.OSetup
             setups_node.addChild(setup_node)
 
         geo_entities = camo_file.dxf_doc.modelspace().entity_space.entities
 
         for entity in geo_entities:
             entity_node = FileTreeNode((str(entity), entity))
+            entity_node.type = ct.ODXF
             geo_node.addChild(entity_node)
 
     def index(self, row, column, parent_index=None):
@@ -121,3 +136,35 @@ class FileTreeModel(QAbstractItemModel):
         if role == Qt.DisplayRole:
             return node.data(index.column())
         return None
+
+    def setData(self, index: QModelIndex, value: typing.Any, role: int = ...) -> bool:
+        if index.isValid() and role == Qt.EditRole:
+            node = index.internalPointer()
+            node._data[index.column()] = value
+            row = index.row()
+            column = index.column()
+
+            return True
+        return False
+
+    def flags(self, index: QModelIndex) -> Qt.ItemFlags:
+        if index.isValid():
+            node = index.internalPointer()
+            flags = Qt.ItemIsEnabled
+            if node.childCount() == 0:
+                flags |= Qt.ItemIsSelectable
+                return flags
+        return super(FileTreeModel, self).flags(index)
+
+    def removeRow(self, row: int, parent: QModelIndex = QModelIndex()) -> bool:
+        if not parent.isValid():
+            # parent is not valid when it is the root node, since the "parent"
+            # method returns an empty QModelIndex
+            parentNode = self._rootNode
+        else:
+            parentNode = parent.internalPointer()  # the node
+
+        parentNode.removeChild(row)
+        return True
+
+
