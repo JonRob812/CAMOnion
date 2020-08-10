@@ -10,10 +10,10 @@ class CamoItemTypes:
     ODXF = 4
 
 
-
 class Origin:
-    def __init__(self, name, x=0.0, y=0.0, angle=0.0):
+    def __init__(self, name, wfo_num=0, x=0.0, y=0.0, angle=0.0):
         self.name = name
+        self.wfo_num = wfo_num
         self.x = x
         self.y = y
         self.angle = angle
@@ -32,12 +32,12 @@ class Setup:
 
 
 class PartFeature:
-    def __init__(self, base_id, setup, name='feature', geometry=None, parameters=None):
-        self.name = name
-        self.base_id = base_id
+    def __init__(self, base_feature_id, setup, geometry=None, parameters=None):
+        self.base_feature_id = base_feature_id
         self.setup = setup
+        self.geometry = geometry
         if geometry is None:
-            geometry = [None]
+            self.geometry = [None]
         self.parameters = parameters
         self.part_operations = []
 
@@ -46,7 +46,7 @@ class PartFeature:
         op.part_feature = self
 
     def db_feature(self, session):
-        feature = session.query(Feature).filter(Feature.id == self.base_id).one()
+        feature = session.query(Feature).filter(Feature.id == self.base_feature_id).one()
         return feature
 
 

@@ -53,12 +53,11 @@ class FileTreeNode(object):
         return True
 
 
-
-
 class FileTreeModel(QAbstractItemModel):
 
-    def __init__(self, camo_file):
+    def __init__(self, camo_file, session):
         super().__init__()
+        self.session = session
         self.origin_index = None
         self.setup_index = None
         self.geo_index = None
@@ -79,9 +78,15 @@ class FileTreeModel(QAbstractItemModel):
             origins_node.addChild(origin_node)
 
         for setup in camo_file.setups:
+            features = [feature for feature in camo_file.features if feature.setup == setup]
             setup_node = FileTreeNode((setup.name, setup))
             setup_node.type = ct.OSetup
             setups_node.addChild(setup_node)
+
+            for feature in features:
+                feature_node = FileTreeNode((feature.db_feature(self.session).name, feature))
+                feature_node.type = ct.OFeature
+                setup_node.addChild(feature_node)
 
         geo_entities = camo_file.dxf_doc.modelspace().entity_space.entities
 

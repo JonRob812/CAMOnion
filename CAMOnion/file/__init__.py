@@ -2,6 +2,7 @@ from datetime import datetime
 import pickle
 import ezdxf
 import copy
+from CAMOnion.core import Origin
 
 
 class CamoFile:
@@ -11,13 +12,15 @@ class CamoFile:
         self.date_created = datetime.now()
         self.date_saved = None
 
+        self.active_origin = Origin('Home - G54')
+
         self.setups = []
         self.origins = []
         self.features = []
         self.operations = []
         self.geometry = []
 
-        self.dxf_imports = []
+        self.origins.append(self.active_origin)
         self.dxf_doc = ezdxf.new(ezdxf.DXF2018)
 
     def set_filename(self, filename):

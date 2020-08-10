@@ -70,7 +70,7 @@
     </widget>
    </item>
    <item>
-    <widget class="QComboBox" name="comboBox"/>
+    <widget class="QComboBox" name="origin_combo"/>
    </item>
   </layout>
  </widget>
