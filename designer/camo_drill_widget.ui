@@ -14,10 +14,10 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="1">
+   <item row="1" column="0">
     <widget class="QListWidget" name="geometry_list"/>
    </item>
-   <item row="0" column="1">
+   <item row="0" column="0">
     <widget class="QFrame" name="frame">
      <property name="frameShape">
       <enum>QFrame::StyledPanel</enum>
@@ -45,72 +45,6 @@
       </item>
       <item row="1" column="2">
        <widget class="QLCDNumber" name="lcdNumber"/>
-      </item>
-     </layout>
-    </widget>
-   </item>
-   <item row="1" column="0">
-    <widget class="QGroupBox" name="groupBox_2">
-     <property name="title">
-      <string>Depths</string>
-     </property>
-     <layout class="QFormLayout" name="formLayout">
-      <item row="2" column="0">
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-      </item>
-      <item row="1" column="1">
-       <widget class="QLabel" name="label_2">
-        <property name="text">
-         <string>Spot</string>
-        </property>
-       </widget>
-      </item>
-      <item row="2" column="1">
-       <widget class="QLineEdit" name="spot_depth"/>
-      </item>
-      <item row="3" column="1">
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Drill</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="1">
-       <widget class="QLabel" name="label_4">
-        <property name="text">
-         <string>Tap</string>
-        </property>
-       </widget>
-      </item>
-      <item row="7" column="1">
-       <widget class="QLabel" name="label_5">
-        <property name="text">
-         <string>Countersink</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1">
-       <widget class="QLineEdit" name="drill_depth"/>
-      </item>
-      <item row="6" column="1">
-       <widget class="QLineEdit" name="tap_depth"/>
-      </item>
-      <item row="8" column="1">
-       <widget class="QLineEdit" name="countersink_depth"/>
-      </item>
-      <item row="9" column="1">
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Ream</string>
-        </property>
-       </widget>
-      </item>
-      <item row="10" column="1">
-       <widget class="QLineEdit" name="ream_depth"/>
       </item>
      </layout>
     </widget>

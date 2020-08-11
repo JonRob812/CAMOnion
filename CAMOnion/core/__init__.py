@@ -28,10 +28,11 @@ class Setup:
 
 
 class PartFeature:
-    def __init__(self, base_feature_id, setup, geometry=None):
+    def __init__(self, base_feature_id, setup, geometry=None, depths=None):
         self.base_feature_id = base_feature_id
         self.setup = setup
         self.geometry = geometry
+        self.depths = depths
         if geometry is None:
             self.geometry = [None]
 

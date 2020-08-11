@@ -16,7 +16,8 @@ from CAMOnion.dialogs.featuredialog import FeatureDialog
 from CAMOnion.widgets.facewidget import FaceWidget
 from CAMOnion.widgets.drillwidget import DrillWidget
 from CAMOnion.widgets.slotwidget import SlotWidget
-from CAMOnion.core.widget_tools import get_combo_data
+from CAMOnion.widgets.depthwidget import DepthWidget
+from CAMOnion.core.widget_tools import get_combo_data, get_combo_data_index, clearLayout, get_depths_from_layout
 from CAMOnion.core import Setup, Origin, PartFeature, PartOperation, CamoOp, CamoItemTypes as ct
 
 import ezdxf
@@ -269,6 +270,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             self.feature_dialog.setup_combo.addItem(setup.name, setup)
 
         self.feature_dialog.buttonBox.rejected.connect(self.feature_dialog.reject)
+        self.feature_dialog.base_feature_combo.currentIndexChanged.connect(self.populate_depth_inputs)
         self.feature_dialog.show()
 
     def show_face_feature_dialog(self):
@@ -312,17 +314,29 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             self.feature_dialog.frame_layout.addWidget(self.feature_dialog.slot_widget)
             self.feature_dialog.slot_widget.add_line_button.clicked.connect(self.add_slot_line)
 
-
     def show_new_face_feature_dialog(self):
         self.show_face_feature_dialog()
         self.feature_dialog.buttonBox.accepted.connect(self.add_face_feature)
+
+    def populate_depth_inputs(self, index):
+        feature = get_combo_data_index(self.feature_dialog.base_feature_combo, index)
+
+        # for i in reversed(range(self.feature_dialog.depth_groupBox.layout().count())):
+        #     self.feature_dialog.depth_groupBox.layout().itemAt(i).widget().setParent(None)
+        clearLayout(self.feature_dialog.depth_groupBox.layout())
+
+        for op in feature.operations:
+            print(str(op.camo_op.op_type))
+            depth_widget = DepthWidget(op.camo_op.op_type)
+            self.feature_dialog.depth_groupBox.layout().addWidget(depth_widget)
 
     def add_face_feature(self):
         base_feature = get_combo_data(self.feature_dialog.base_feature_combo)
         print(base_feature)
         setup = get_combo_data(self.feature_dialog.setup_combo)
         print(setup)
-        feature = PartFeature(base_feature.id, setup)
+        depths = get_depths_from_layout(self.feature_dialog.depth_groupBox.layout())
+        feature = PartFeature(base_feature.id, setup, depths=depths)
         self.controller.current_camo_file.features.append(feature)
         self.controller.build_file_tree_model()
 
@@ -342,7 +356,8 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         setup = get_combo_data(self.feature_dialog.setup_combo)
         geo = self.feature_dialog.selected_slot_lines
         if len(geo) > 0:
-            feature = PartFeature(base_feature.id, setup, geometry=geo)
+            depths = get_depths_from_layout(self.feature_dialog.depth_groupBox.layout())
+            feature = PartFeature(base_feature.id, setup, geometry=geo, depths=depths)
             self.controller.current_camo_file.features.append(feature)
             self.controller.build_file_tree_model()
 
@@ -365,7 +380,8 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         base_feature = get_combo_data(self.feature_dialog.base_feature_combo)
         setup = get_combo_data(self.feature_dialog.setup_combo)
         geo = self.feature_dialog.drill_widget.selected_circles
-        feature = PartFeature(base_feature.id, setup, geometry=geo)
+        depths = get_depths_from_layout(self.feature_dialog.depth_groupBox.layout())
+        feature = PartFeature(base_feature.id, setup, geometry=geo, depths=depths)
         self.controller.current_camo_file.features.append(feature)
         self.controller.build_file_tree_model()
 
