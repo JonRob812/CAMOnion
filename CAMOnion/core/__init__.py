@@ -18,12 +18,14 @@ class Origin:
         self.y = y
         self.angle = angle
 
+    def __str__(self):
+        return f'origin: {self.name} G{self.wfo_num + 54} X{self.x} Y{self.y} angle:{self.angle}'
 
 class Setup:
-    def __init__(self, name='New Setup', machine=None, origin=None, clearance_plane=1.0):
+    def __init__(self, name='New Setup', machine_id=None, origin=None, clearance_plane=1.0):
         self.name = name
         self.origin = origin
-        self.machine = machine
+        self.machine_id = machine_id
         self.clearance_plane = clearance_plane
 
 
