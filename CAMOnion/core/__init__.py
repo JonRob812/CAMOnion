@@ -20,41 +20,44 @@ class Origin:
 
 
 class Setup:
-    def __init__(self, name='New Setup', machine=None, origin=None):
+    def __init__(self, name='New Setup', machine=None, origin=None, clearance_plane=1.0):
         self.name = name
         self.origin = origin
         self.machine = machine
-        self.part_features = []
-
-    def add_feature(self, feature):
-        feature.setup = self
-        self.part_features.append(feature)
+        self.clearance_plane = clearance_plane
 
 
 class PartFeature:
-    def __init__(self, base_feature_id, setup, geometry=None, parameters=None):
+    def __init__(self, base_feature_id, setup, geometry=None):
         self.base_feature_id = base_feature_id
         self.setup = setup
         self.geometry = geometry
         if geometry is None:
             self.geometry = [None]
-        self.parameters = parameters
-        self.part_operations = []
-
-    def add_operation(self, op):
-        self.part_operations.append(op)
-        op.part_feature = self
 
     def db_feature(self, session):
         feature = session.query(Feature).filter(Feature.id == self.base_feature_id).one()
         return feature
 
+    def __str__(self):
+        string = f'{self}'
+
 
 class PartOperation:
-    def __init__(self, base_id, part_feature, tool):
-        self.base_id = base_id
+    def __init__(self, base_operation, part_feature):
+        self.base_operation = base_operation
         self.part_feature = part_feature
-        self.tool = tool
+
+    def __str__(self):
+        string = f'{self.base_operation.feature.name} ' \
+                 f'{self.base_operation.camo_op.feature_type.feature_type} ' \
+                 f'{self.base_operation.camo_op.function} ' \
+                 f'{self.base_operation.tool.diameter} ' \
+                 f'{self.base_operation.tool.name} ' \
+                 f'qty {len(self.part_feature.geometry)}'
+        return string
+
+
 
 
 

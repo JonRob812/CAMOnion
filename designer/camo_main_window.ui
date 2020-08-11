@@ -137,7 +137,7 @@
         </attribute>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QTableWidget" name="tableWidget">
+          <widget class="QListWidget" name="op_dock">
            <property name="maximumSize">
             <size>
              <width>16777215</width>

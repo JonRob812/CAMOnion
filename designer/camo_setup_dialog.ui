@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>219</width>
-    <height>125</height>
+    <width>257</width>
+    <height>151</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -28,7 +28,13 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="2" column="2">
+    <widget class="QComboBox" name="origin_combo"/>
+   </item>
+   <item row="1" column="2">
+    <widget class="QComboBox" name="machine_combo"/>
+   </item>
+   <item row="4" column="2">
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -38,23 +44,7 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Name</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QComboBox" name="origin_combo"/>
-   </item>
-   <item row="0" column="2">
-    <widget class="QLineEdit" name="setup_name_input"/>
-   </item>
-   <item row="1" column="2">
-    <widget class="QComboBox" name="machine_combo"/>
-   </item>
-   <item row="4" column="2">
+   <item row="5" column="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -66,6 +56,33 @@
       </size>
      </property>
     </spacer>
+   </item>
+   <item row="0" column="2">
+    <widget class="QLineEdit" name="setup_name_input"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QDoubleSpinBox" name="clearance_spinbox">
+     <property name="singleStep">
+      <double>0.100000000000000</double>
+     </property>
+     <property name="value">
+      <double>3.000000000000000</double>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_4">
+     <property name="text">
+      <string>Clearance Plane</string>
+     </property>
+    </widget>
    </item>
   </layout>
  </widget>

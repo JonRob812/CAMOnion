@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>233</width>
-    <height>38</height>
+    <width>314</width>
+    <height>33</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -71,6 +71,16 @@
    </item>
    <item>
     <widget class="QComboBox" name="origin_combo"/>
+   </item>
+   <item>
+    <widget class="Line" name="line_3">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QComboBox" name="active_setup_combo"/>
    </item>
   </layout>
  </widget>

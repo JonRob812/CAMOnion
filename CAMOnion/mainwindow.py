@@ -50,6 +50,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.position_widget = PositionWidget()
         self.statusbar.addWidget(self.position_widget)
         self.position_widget.change_current_origin.connect(self.change_current_origin)
+        self.position_widget.change_active_setup.connect(self.change_active_setup)
         self.origin_dialog = None
         self.setup_dialog = None
         self.feature_dialog = None
@@ -99,10 +100,20 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         for origin in self.controller.current_camo_file.origins:
             self.position_widget.origin_combo.addItem(origin.name, origin)
 
+    def populate_active_setup_combo(self):
+        self.position_widget.active_setup_combo.clear()
+        for setup in self.controller.current_camo_file.setups:
+            self.position_widget.active_setup_combo.addItem(setup.name, setup)
+
     def change_current_origin(self, origin):
         if origin:
             self.controller.current_camo_file.active_origin = origin
             self.apply_origin_to_scene()
+
+    def change_active_setup(self, setup):
+        if setup:
+            self.controller.current_camo_file.active_setup = setup
+            self.controller.populate_operation_list()
 
     def edit_tree_item(self, ):
 
@@ -220,6 +231,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.setup_dialog.buttonBox.accepted.connect(self.edit_setup)
         self.setup_dialog.machine_combo.setCurrentIndex(self.setup_dialog.machine_combo.findText(setup.machine.name))
         self.setup_dialog.origin_combo.setCurrentIndex(self.setup_dialog.origin_combo.findText(setup.origin.name))
+        self.setup_dialog.clearance_spinbox.setValue(setup.clearance_plane)
         self.setup_dialog.setup_name_input.setText(setup.name)
         self.setup_dialog.show()
 
@@ -227,8 +239,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         name = self.setup_dialog.setup_name_input.text()
         machine = self.setup_dialog.machine_combo.itemData(self.setup_dialog.machine_combo.currentIndex())
         origin = self.setup_dialog.origin_combo.itemData(self.setup_dialog.origin_combo.currentIndex())
+        clearance = self.setup_dialog.clearance_spinbox.value()
 
-        setup = Setup(name, machine, origin)
+        setup = Setup(name, machine, origin, clearance)
         self.controller.current_camo_file.setups.append(setup)
         # self.controller.tree_model.layoutChanged.emit()
         self.controller.build_file_tree_model()
@@ -239,6 +252,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             self.setup_dialog.machine_combo.currentIndex())
         self.editor_setup.origin = self.setup_dialog.origin_combo.itemData(
             self.setup_dialog.origin_combo.currentIndex())
+        self.editor_setup.origin = self.setup_dialog.clearance_spinbox.value()
         self.controller.build_file_tree_model()
 
     def show_feature_dialog(self):
@@ -314,7 +328,8 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
     def show_new_drill_feature_dialog(self):
         self.show_drill_feature_dialog()
-        self.feature_dialog.buttonBox.accepted.connect(self.add_drill_feature)
+        if self.feature_dialog:
+            self.feature_dialog.buttonBox.accepted.connect(self.add_drill_feature)
 
     def show_new_slot_feature_dialog(self):
         self.show_slot_feature_dialog()
@@ -380,6 +395,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             item = qw.QListWidgetItem(str(circle))
             item.circle = circle
             self.feature_dialog.drill_widget.geometry_list.addItem(item)
+        self.feature_dialog.drill_widget.lcdNumber.display(len(filtered_circles))
 
     def dxf_entity_clicked_circle_diameter(self, item):
         item_data = item.data(0)
@@ -426,7 +442,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             elif self.picker_axis == 'y':
                 self.origin_dialog.origin_y.setText(str(round(picked_item_vector.y, 4)))
         self.origin_dialog.showNormal()
-        self.graphicsView.graphics_view_clicked.disconnect(self.dxf_entity_clicked)
+        self.graphicsView.graphics_view_clicked.disconnect(self.dxf_entity_clicked_origin)
 
     def import_dxf(self):
         path, _ = qw.QFileDialog.getOpenFileName(self, caption='Select CAD Document', filter='DXF Documents (*.dxf)')
