@@ -1,0 +1,11 @@
+id,op_type,function,priority,feature_type_id
+1,Face - R,face_rough,10,3
+2,Face - F,face_finish,20,3
+3,Spot,drill,30,1
+4,Drill,drill,40,1
+5,Peck,drill,40,1
+6,Countersink,drill,44,1
+7,Ream,drill,45,1
+8,Tap,drill,50,1
+9,Slot - R,slot_rough,60,2
+10,Slot - F,slot_finish,70,2

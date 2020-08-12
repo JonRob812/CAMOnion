@@ -7,17 +7,17 @@
     <x>0</x>
     <y>0</y>
     <width>401</width>
-    <height>74</height>
+    <height>86</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Find camo.db</string>
+   <string>SQL URL</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QLabel" name="label">
      <property name="text">
-      <string>Database file</string>
+      <string>Database URL</string>
      </property>
     </widget>
    </item>

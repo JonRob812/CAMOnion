@@ -15,8 +15,8 @@ def get_session(url):
     return s()
 
 
-def setup_sql(file):
-    engine = get_engine("sqlite:///" + file)
+def setup_sql(url):
+    engine = get_engine(url)
     connection = engine.connect()
     session_maker = sessionmaker(bind=engine)
     return engine, connection, session_maker()

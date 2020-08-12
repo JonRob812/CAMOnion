@@ -21,12 +21,18 @@ class Origin:
     def __str__(self):
         return f'origin: {self.name} G{self.wfo_num + 54} X{self.x} Y{self.y} angle:{self.angle}'
 
+
 class Setup:
-    def __init__(self, name='New Setup', machine_id=None, origin=None, clearance_plane=1.0):
+    def __init__(self, name='New Setup', machine_id=None, origin=None, clearance_plane=1.0, program_number=0000):
         self.name = name
         self.origin = origin
         self.machine_id = machine_id
+        self.program_number = program_number
         self.clearance_plane = clearance_plane
+
+    def get_machine(self, session):
+        machine = session.query(Machine).filter(Machine.id == self.machine_id).one()
+        return machine
 
 
 class PartFeature:
@@ -42,8 +48,6 @@ class PartFeature:
         feature = session.query(Feature).filter(Feature.id == self.base_feature_id).one()
         return feature
 
-    def __str__(self):
-        string = f'{self}'
 
 
 class PartOperation:

@@ -36,7 +36,7 @@ class Tool(Base):
     qb_id = Column(Integer, unique=True)
     tool_type_id = Column(Integer, ForeignKey('tool_types.id'))
     tool_number = Column(Integer)
-    name = Column(String)
+    name = Column(String(50))
     diameter = Column(Numeric)
     number_of_flutes = Column(Integer)
     pitch = Column(Numeric)
@@ -51,15 +51,15 @@ class Tool(Base):
 class Tool_Type(Base):
     __tablename__ = 'tool_types'
     id = Column(Integer, primary_key=True)
-    tool_type = Column(String)
+    tool_type = Column(String(50))
     tools = relationship("Tool", back_populates='tool_type')
 
 
 class Feature(Base):
     __tablename__ = 'features'
-    name = Column(String, unique=True)
+    name = Column(String(50), unique=True)
     id = Column(Integer, primary_key=True)
-    description = Column(String)
+    description = Column(String(50))
     operations = relationship('Operation', back_populates='feature')
     feature_type_id = Column(Integer, ForeignKey('feature_types.id'))
     feature_type = relationship('Feature_Type', back_populates='features')
@@ -68,7 +68,7 @@ class Feature(Base):
 class Feature_Type(Base):
     __tablename__ = 'feature_types'
     id = Column(Integer, primary_key=True)
-    feature_type = Column(String, unique=True)
+    feature_type = Column(String(50), unique=True)
     features = relationship('Feature', back_populates='feature_type')
     camo_ops = relationship('CamoOp', back_populates='feature_type')
 
@@ -94,8 +94,8 @@ class Operation(Base):
 class CamoOp(Base):
     __tablename__ = 'camo_ops'
     id = Column(Integer, primary_key=True)
-    op_type = Column(String)
-    function = Column(String)
+    op_type = Column(String(50))
+    function = Column(String(50))
     priority = Column(Numeric)
     feature_type_id = Column(Integer, ForeignKey('feature_types.id'))
     feature_type = relationship('Feature_Type', back_populates='camo_ops')
@@ -108,18 +108,18 @@ class CamoOp(Base):
 class Machine(Base):
     __tablename__ = 'machines'
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    name = Column(String(50))
     max_rpm = Column(Integer)
-    spot = Column(String)
-    drill = Column(String)
-    tap = Column(String)
-    peck = Column(String)
-    ream = Column(String)
-    countersink = Column(String)
-    drill_format = Column(String)
-    tap_format = Column(String)
-    program_start = Column(String)
-    program_end = Column(String)
-    tool_start = Column(String)
-    tool_end = Column(String)
-    op_start = Column(String)
+    spot = Column(String(16))
+    drill = Column(String(16))
+    tap = Column(String(16))
+    peck = Column(String(16))
+    ream = Column(String(16))
+    countersink = Column(String(16))
+    drill_format = Column(String(1000))
+    tap_format = Column(String(1000))
+    program_start = Column(String(1000))
+    program_end = Column(String(1000))
+    tool_start = Column(String(1000))
+    tool_end = Column(String(1000))
+    op_start = Column(String(1000))

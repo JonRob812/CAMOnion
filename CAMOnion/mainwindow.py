@@ -1,6 +1,7 @@
 import argparse
 import signal
 import sys
+import os
 from functools import partial
 from typing import Optional
 import math
@@ -19,7 +20,7 @@ from CAMOnion.widgets.slotwidget import SlotWidget
 from CAMOnion.widgets.depthwidget import DepthWidget
 from CAMOnion.core.widget_tools import get_combo_data, get_combo_data_index, clearLayout, get_depths_from_layout
 from CAMOnion.core import Setup, Origin, PartFeature, PartOperation, CamoOp, CamoItemTypes as ct
-from CAMOnion.engine import post
+from CAMOnion.engine import CodeBuilder
 
 import ezdxf
 from ezdxf.addons.drawing import Frontend, RenderContext
@@ -37,6 +38,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.controller = controller
         self.setupUi(self)
         self.scene = qw.QGraphicsScene()
+        items =  self.scene.items()
+        for item in items:
+            item.transformations()
         self.view = self.graphicsView
         self.view.setScene(self.scene)
         self.view.scale(1, -1)  # so that +y is up
@@ -86,12 +90,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
         self.get_all_dxf_entities()
         self.controller.populate_operation_list()
+        code_builder = CodeBuilder(self.controller)
 
-        operations = self.controller.current_camo_file.operations
-
-        self.controller.nc_output = post(operations, self.controller.session)
-
-        print('fucker')
+        self.controller.nc_output = code_builder.post()
 
     def get_all_dxf_entities(self):
         msp = self.controller.current_camo_file.dxf_doc.modelspace()
@@ -273,19 +274,21 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.setup_dialog = SetupDialog(self.controller)
         self.editor_setup = setup
         self.setup_dialog.buttonBox.accepted.connect(self.edit_setup)
-        self.setup_dialog.machine_combo.setCurrentIndex(self.setup_dialog.machine_combo.findText(setup.machine.name))
+        self.setup_dialog.machine_combo.setCurrentIndex(self.setup_dialog.machine_combo.findText(setup.get_machine(self.controller.session).name))
         self.setup_dialog.origin_combo.setCurrentIndex(self.setup_dialog.origin_combo.findText(setup.origin.name))
         self.setup_dialog.clearance_spinbox.setValue(setup.clearance_plane)
         self.setup_dialog.setup_name_input.setText(setup.name)
+        self.setup_dialog.program_number_spinbox.setValue(setup.program_number)
         self.setup_dialog.show()
 
     def add_new_setup(self):
         name = self.setup_dialog.setup_name_input.text()
-        machine = self.setup_dialog.machine_combo.itemData(self.setup_dialog.machine_combo.currentIndex())
-        origin = self.setup_dialog.origin_combo.itemData(self.setup_dialog.origin_combo.currentIndex())
+        machine = get_combo_data(self.setup_dialog.machine_combo)
+        origin = get_combo_data(self.setup_dialog.origin_combo)
         clearance = self.setup_dialog.clearance_spinbox.value()
+        program_number = self.setup_dialog.program_number_spinbox.value()
 
-        setup = Setup(name, machine.id, origin, clearance)
+        setup = Setup(name, machine.id, origin, clearance, program_number)
         self.controller.current_camo_file.setups.append(setup)
         self.controller.build_file_tree_model()
         self.populate_active_setup_combo()
@@ -296,7 +299,8 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             self.setup_dialog.machine_combo.currentIndex())
         self.editor_setup.origin = self.setup_dialog.origin_combo.itemData(
             self.setup_dialog.origin_combo.currentIndex())
-        self.editor_setup.origin = self.setup_dialog.clearance_spinbox.value()
+        self.editor_setup.clearance = self.setup_dialog.clearance_spinbox.value()
+        self.editor_setup.program_number = self.setup_dialog.program_number_spinbox.value()
         self.controller.build_file_tree_model()
 
     def show_feature_dialog(self):

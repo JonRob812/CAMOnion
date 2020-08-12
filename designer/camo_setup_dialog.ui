@@ -14,37 +14,14 @@
    <string>Setup</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QLabel" name="label">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_3">
      <property name="text">
-      <string>Machine</string>
+      <string>Name</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0">
-    <widget class="QLabel" name="label_2">
-     <property name="text">
-      <string>Origin</string>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="2">
-    <widget class="QComboBox" name="origin_combo"/>
-   </item>
-   <item row="1" column="2">
-    <widget class="QComboBox" name="machine_combo"/>
-   </item>
-   <item row="4" column="2">
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
-   </item>
-   <item row="5" column="2">
+   <item row="6" column="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -57,17 +34,20 @@
      </property>
     </spacer>
    </item>
-   <item row="0" column="2">
-    <widget class="QLineEdit" name="setup_name_input"/>
-   </item>
-   <item row="0" column="0">
-    <widget class="QLabel" name="label_3">
-     <property name="text">
-      <string>Name</string>
+   <item row="5" column="2">
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
     </widget>
    </item>
-   <item row="3" column="2">
+   <item row="0" column="2">
+    <widget class="QLineEdit" name="setup_name_input"/>
+   </item>
+   <item row="4" column="2">
     <widget class="QDoubleSpinBox" name="clearance_spinbox">
      <property name="singleStep">
       <double>0.100000000000000</double>
@@ -77,10 +57,50 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0">
+   <item row="4" column="0">
     <widget class="QLabel" name="label_4">
      <property name="text">
       <string>Clearance Plane</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_2">
+     <property name="text">
+      <string>Origin</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Machine</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="2">
+    <widget class="QComboBox" name="origin_combo"/>
+   </item>
+   <item row="1" column="2">
+    <widget class="QComboBox" name="machine_combo"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QLabel" name="label_5">
+     <property name="text">
+      <string>Program Number</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="2">
+    <widget class="QSpinBox" name="program_number_spinbox">
+     <property name="maximum">
+      <number>7000</number>
+     </property>
+     <property name="singleStep">
+      <number>100</number>
+     </property>
+     <property name="value">
+      <number>100</number>
      </property>
     </widget>
    </item>
