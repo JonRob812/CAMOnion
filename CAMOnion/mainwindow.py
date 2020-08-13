@@ -94,6 +94,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
         self.controller.nc_output = code_builder.post()
         self.nc_output_edit.setText(self.controller.nc_output)
+        self.tabWidget.setCurrentWidget(self.code_tab)
 
     def save_nc_file(self):
         filename, _ = qw.QFileDialog.getSaveFileName(self, 'Save .NC File', filter='*.NC')
@@ -286,6 +287,8 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.setup_dialog.clearance_spinbox.setValue(setup.clearance_plane)
         self.setup_dialog.setup_name_input.setText(setup.name)
         self.setup_dialog.program_number_spinbox.setValue(setup.program_number)
+        # setup.qb_setup_id = ''
+        self.setup_dialog.setup_id_edit.setText(setup.qb_setup_id)
         self.setup_dialog.show()
 
     def add_new_setup(self):
@@ -294,8 +297,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         origin = get_combo_data(self.setup_dialog.origin_combo)
         clearance = self.setup_dialog.clearance_spinbox.value()
         program_number = self.setup_dialog.program_number_spinbox.value()
+        setup_id = self.setup_dialog.setup_id_input.text()
 
-        setup = Setup(name, machine.id, origin, clearance, program_number)
+        setup = Setup(name, machine.id, origin, clearance, program_number, setup_id)
         self.controller.current_camo_file.setups.append(setup)
         self.controller.build_file_tree_model()
         self.populate_active_setup_combo()
@@ -308,6 +312,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             self.setup_dialog.origin_combo.currentIndex())
         self.editor_setup.clearance_plane = self.setup_dialog.clearance_spinbox.value()
         self.editor_setup.program_number = self.setup_dialog.program_number_spinbox.value()
+        self.editor_setup.qb_setup_id = self.setup_dialog.setup_id_edit.text()
         self.controller.build_file_tree_model()
 
     def show_feature_dialog(self):

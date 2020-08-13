@@ -19,9 +19,10 @@ class CodeBuilder:
         self.session = self.controller.session
         self.setup = self.operations[0].part_feature.setup
         self.machine = self.session.query(Machine).filter(
-            Machine.id == self.operations[0].part_feature.setup.machine.id).one()
+            Machine.id == self.operations[0].part_feature.setup.machine_id).one()
         self.origin = self.setup.origin
         self.header_comment = os.path.basename(self.controller.current_camo_file.filename)
+        self.program_number = self.operations[0].part_feature.setup.program_number
 
         self.dxf_entities = self.controller.main_window.all_dxf_entities
 
@@ -35,6 +36,7 @@ class CodeBuilder:
 
     def process_operations(self):
         for i, op in enumerate(self.operations):
+            op.machine = self.session.query(Machine).filter(Machine.id == self.operations[0].part_feature.setup.machine_id).one()
             op.points = self.get_operation_points(op)
             op.cutting_code = code_engines[op.base_operation.camo_op.function](op)
             op.start_code = self.get_start_code(op, i)
@@ -49,7 +51,7 @@ class CodeBuilder:
             self.get_tool_start_code(code, op, spindle, x, y)
         else:
             self.get_op_start_code(code, op, spindle)
-        return '\n'.join(code)
+        return ''.join(code)
 
     def set_current_tool(self, op, i):
         self.current_tool = op.base_operation.tool.tool_number
@@ -80,9 +82,9 @@ class CodeBuilder:
         if self.next_tool and self.next_tool != self.current_tool:
             code.append(self.machine.tool_end)
         if len(code) > 0:
-            return '\n'.join(code)
+            return ''.join(code)
         else:
-            return '\n'
+            return ''
 
     def get_tool_list(self):
         self.tool_list = list(set([op.base_operation.tool for op in self.operations]))
@@ -116,7 +118,7 @@ class CodeBuilder:
 
     def get_program_start_code(self):
         self.code.append(
-            self.machine.program_start.format(program_number='0100', program_comment=self.header_comment.upper(),
+            self.machine.program_start.format(program_number=self.program_number, program_comment=self.header_comment.upper(),
                                               tool_list=self.tool_list, machine_name=self.machine.name.upper()))
 
     def get_code_body(self):

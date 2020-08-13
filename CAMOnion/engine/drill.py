@@ -1,8 +1,8 @@
 
 def drill(op):
-    g = op.part_feature.setup.machine.__dict__[op.base_operation.camo_op.op_type.lower()]
+    g = op.machine.__dict__[op.base_operation.camo_op.op_type.lower()]
     if g == '83':
-        g = f'{g} Q{op.part_feature.setup.machine.__dict__["peck"]}'
+        g = f'{g} Q{round(op.base_operation.peck, 4)}'
     remaining_points = op.points[1:]
     canned_points = '\n'.join([f'X{point[0]:.4f} Y{point[1]:.4f}' for point in remaining_points])
     points = canned_points
@@ -38,5 +38,5 @@ def drill(op):
         f = str(round(float(f), 2))
     if p is not None:
         p = str(round(float(p), 4))
-    return op.part_feature.setup.machine.__dict__[code_format].format(code=g, depth=d, r_plane=.1, speed=s, feed=f, pitch=p,
+    return op.machine.__dict__[code_format].format(code=g, depth=d, r_plane=.1, speed=s, feed=f, pitch=p,
                                                       points=points, )

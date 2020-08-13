@@ -23,12 +23,13 @@ class Origin:
 
 
 class Setup:
-    def __init__(self, name='New Setup', machine_id=None, origin=None, clearance_plane=1.0, program_number=0000):
+    def __init__(self, name, machine_id, origin, clearance_plane, program_number, setup_id):
         self.name = name
         self.origin = origin
         self.machine_id = machine_id
         self.program_number = program_number
         self.clearance_plane = clearance_plane
+        self.qb_setup_id = setup_id
 
     def get_machine(self, session):
         machine = session.query(Machine).filter(Machine.id == self.machine_id).one()

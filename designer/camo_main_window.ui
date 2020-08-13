@@ -220,6 +220,8 @@
    <addaction name="separator"/>
    <addaction name="actionSimulate"/>
    <addaction name="actionPost"/>
+   <addaction name="actionSend_Tool_List"/>
+   <addaction name="actionTake_Picture"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <widget class="QToolBar" name="drawing_toolbar">
@@ -367,6 +369,16 @@
   <action name="new_slot">
    <property name="text">
     <string>Slot</string>
+   </property>
+  </action>
+  <action name="actionSend_Tool_List">
+   <property name="text">
+    <string>Send Tool List</string>
+   </property>
+  </action>
+  <action name="actionTake_Picture">
+   <property name="text">
+    <string>Take Picture</string>
    </property>
   </action>
  </widget>
