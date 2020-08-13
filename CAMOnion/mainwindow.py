@@ -57,7 +57,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.statusbar.addWidget(self.position_widget)
         self.position_widget.change_current_origin.connect(self.change_current_origin)
         self.position_widget.change_active_setup.connect(self.change_active_setup)
-
+        self.save_nc_button.clicked.connect(self.save_nc_file)
         self.actionPost.triggered.connect(self.post_file)
 
         self.origin_dialog = None
@@ -93,6 +93,13 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         code_builder = CodeBuilder(self.controller)
 
         self.controller.nc_output = code_builder.post()
+        self.nc_output_edit.setText(self.controller.nc_output)
+
+    def save_nc_file(self):
+        filename, _ = qw.QFileDialog.getSaveFileName(self, 'Save .NC File', filter='*.NC')
+        if filename:
+            with open(filename, 'w') as file:
+                file.writelines(self.nc_output_edit.toPlainText())
 
     def get_all_dxf_entities(self):
         msp = self.controller.current_camo_file.dxf_doc.modelspace()
@@ -295,11 +302,11 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
     def edit_setup(self):
         self.editor_setup.name = self.setup_dialog.setup_name_input.text()
-        self.editor_setup.machine = self.setup_dialog.machine_combo.itemData(
-            self.setup_dialog.machine_combo.currentIndex())
+        self.editor_setup.machine = get_combo_data(self.setup_dialog.machine_combo)
+        self.editor_setup.machine_id = self.editor_setup.machine.id
         self.editor_setup.origin = self.setup_dialog.origin_combo.itemData(
             self.setup_dialog.origin_combo.currentIndex())
-        self.editor_setup.clearance = self.setup_dialog.clearance_spinbox.value()
+        self.editor_setup.clearance_plane = self.setup_dialog.clearance_spinbox.value()
         self.editor_setup.program_number = self.setup_dialog.program_number_spinbox.value()
         self.controller.build_file_tree_model()
 
