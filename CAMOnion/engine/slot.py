@@ -47,6 +47,6 @@ def slot_finish(op):
         code.append(f"G00 X{round(start_point[0], 4)} Y{round(start_point[1], 4)}")
         code.append(f"G01 Z0 F{op.base_operation.feed:.2f}")
         for point in slot:
-            code.append(f"X{point[0]} Y{point[1]} Z{op.part_feature.depths[op.base_operation.camo_op.op_type]}")
+            code.append(f"X{round(point[0], 4)} Y{round(point[1], 4)} Z{op.part_feature.depths[op.base_operation.camo_op.op_type]}")
         code.append("G00 Z.1")
     return '\n'.join(code)

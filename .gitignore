@@ -5,3 +5,4 @@ dist/
 Output/ 
 CAMOnion/resources/
 installer/
+/CAMOnion/qb_client.py

@@ -13,18 +13,10 @@ class ConnectWindow(QDialog, Ui_Dialog):
         self.setupUi(self)
         self.user_input.setText(self.controller.db)
         self.buttonBox.accepted.connect(self.set_db)
-        self.choose_file_button.clicked.connect(self.show_file_getter)
-
         self.file_getter = None
 
     def set_db(self):
         self.new_db.emit(self.user_input.text())
-
-    def show_file_getter(self):
-        path, _ = QFileDialog.getOpenFileName(self, caption='choose camo.db', filter='sqlite.db (*.db)')
-        if path:
-            self.user_input.setText(path)
-            print(path)
 
 
 

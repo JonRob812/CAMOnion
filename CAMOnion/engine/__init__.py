@@ -133,13 +133,13 @@ class CodeBuilder:
     def get_slot_points(self, op):
         op_geo = [self.dxf_entities[entity] for entity in op.part_feature.geometry]
         points = all_slot_points_from_lines(op_geo)
-        translated_points = []
+        rotated_lines = []
         for line in points:
-
+            rotated_line_points = []
             for point in line:
-                translated_points.append(self.translate_point(point))
-
-        return (translated_points[0], translated_points[1]), (translated_points[2], translated_points[3])
+                rotated_line_points.append(self.translate_point(point))
+            rotated_lines.append((rotated_line_points[0], rotated_line_points[1]))
+        return rotated_lines
 
     def get_drill_points(self, op):
         op_geo = [self.dxf_entities[entity] for entity in op.part_feature.geometry]
@@ -176,8 +176,7 @@ def all_points_from_lines(lines):
 def all_slot_points_from_lines(lines):
     points = []
     for line in lines:
-        points.append(((round(line.dxf.start[0], 4), round(line.dxf.start[1], 4)),
-                       (round(line.dxf.end[0], 4), round(line.dxf.end[1], 4))))
+        points.append(((round(line.dxf.start[0], 4), round(line.dxf.start[1], 4)), (round(line.dxf.end[0], 4), round(line.dxf.end[1], 4))))
     return points
 
 

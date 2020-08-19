@@ -7,11 +7,10 @@ database_file = 'camo.db'
 # if database_file in os.listdir('.'):
 #     os.remove(database_file)
 
-# connection_url = 'sqlite:///C:\\JonRob\\REPO\\CAMOnion\\' + database_file
+connection_url = 'sqlite:///C:\\JonRob\\REPO\\CAMOnion\\' + database_file
 connection_url = 'mysql+mysqldb://root:123qwe@localhost:3306/camo'
 engine = create_engine(connection_url)
 Session = sessionmaker(bind=engine)
 session = Session()
 
 Base.metadata.create_all(engine)
-

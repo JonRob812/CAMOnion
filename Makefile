@@ -4,6 +4,7 @@ UI_SRC_DIR = designer
 RESOURCE_QRC = resources.qrc
 CAMO_RESOURCES = $(APP)/resources/camo_resources.py
 BUILD_DIST = dist/CAMOnion
+INSTALLER_FILE = installer/getCAMO.exe
 UI_SRC_FILES = $(wildcard $(UI_SRC_DIR)/*.ui)
 UI_FILES = $(patsubst $(UI_SRC_DIR)/%.ui, $(APP)/ui/%_ui.py, $(UI_SRC_FILES))
 
@@ -25,9 +26,16 @@ $(CAMO_RESOURCES) : $(RESOURCE_QRC)
 	rm -f $@
 	pyrcc5 -o $@ $<
 
-.PHONY : installer
-installer : BUILD_DIST
+.PHONY: deploy
+deploy : $(INSTALLER_FILE)
+	cp installer/getCAMO.exe "F:/CNC DATA/CAMOnion/"
+
+$(INSTALLER_FILE): exe
 	compil32 /cc "getcamo.iss"
+
+.PHONY : installer
+installer : $(INSTALLER_FILE)
+
 
 BUILD_DIST: exe
 

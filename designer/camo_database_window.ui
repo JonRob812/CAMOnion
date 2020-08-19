@@ -527,6 +527,11 @@
     <string>Connect</string>
    </property>
   </action>
+  <action name="actionSet">
+   <property name="text">
+    <string>Set</string>
+   </property>
+  </action>
  </widget>
  <tabstops>
   <tabstop>diameter_input</tabstop>

@@ -14,6 +14,7 @@ from CAMOnion.dialogs.origindialog import OriginDialog
 from CAMOnion.widgets.positionwidget import PositionWidget
 from CAMOnion.dialogs.setupdialog import SetupDialog
 from CAMOnion.dialogs.featuredialog import FeatureDialog
+from CAMOnion.dialogs.errormessage import show_error_message
 from CAMOnion.widgets.facewidget import FaceWidget
 from CAMOnion.widgets.drillwidget import DrillWidget
 from CAMOnion.widgets.slotwidget import SlotWidget
@@ -59,6 +60,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.position_widget.change_active_setup.connect(self.change_active_setup)
         self.save_nc_button.clicked.connect(self.save_nc_file)
         self.actionPost.triggered.connect(self.post_file)
+        self.actionSet_DB.triggered.connect(self.controller.show_connect_dialog)
 
         self.origin_dialog = None
         self.setup_dialog = None
@@ -90,11 +92,14 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
         self.get_all_dxf_entities()
         self.controller.populate_operation_list()
-        code_builder = CodeBuilder(self.controller)
-
-        self.controller.nc_output = code_builder.post()
-        self.nc_output_edit.setText(self.controller.nc_output)
-        self.tabWidget.setCurrentWidget(self.code_tab)
+        if hasattr(self.controller.current_camo_file,'operations'):
+            if len(self.controller.current_camo_file.operations) > 0:
+                code_builder = CodeBuilder(self.controller)
+                self.controller.nc_output = code_builder.post()
+                self.nc_output_edit.setText(self.controller.nc_output)
+                self.tabWidget.setCurrentWidget(self.code_tab)
+        else:
+            show_error_message('No features', 'please have active setup with features to post NC code')
 
     def save_nc_file(self):
         filename, _ = qw.QFileDialog.getSaveFileName(self, 'Save .NC File', filter='*.NC')
@@ -138,14 +143,18 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         selected_node = self.treeView.indexAt(self.right_click_point)
         item = selected_node.internalPointer()
         print(item)
-        if isinstance(item._data[1], Setup):
-            self.controller.current_camo_file.setups.remove(item._data[1])
-        elif isinstance(item._data[1], Origin):
-            self.controller.current_camo_file.origins.remove(item._data[1])
-        elif isinstance(item._data[1], PartFeature):
-            self.controller.current_camo_file.features.remove(item._data[1])
+        item = item._data[1]
+        if isinstance(item, Setup):
+            self.controller.current_camo_file.setups.remove(item)
+        elif isinstance(item, Origin):
+            self.controller.current_camo_file.origins.remove(item)
+        elif isinstance(item, PartFeature):
+            self.controller.current_camo_file.features.remove(item)
+        elif hasattr(item, 'DXFTYPE'):
+            self.controller.current_camo_file.dxf_doc.modelspace().delete_entity(item)
         else:
             return
+        self.set_document(self.controller.current_camo_file.dxf_doc)
         self.controller.build_file_tree_model()
 
     def populate_origin_comboBox(self):
@@ -268,11 +277,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
     def show_new_setup_dialog(self):
         if len(self.controller.current_camo_file.origins) < 1:
-            no_setup_message = qw.QMessageBox()
-            no_setup_message.setWindowTitle('Error')
-            no_setup_message.setText('Please add origin')
-            no_setup_message.setIcon(no_setup_message.Critical)
-            no_setup_message.exec_()
+            show_error_message('Error', 'Please add origin')
             return
         self.setup_dialog = SetupDialog(self.controller)
         self.setup_dialog.buttonBox.accepted.connect(self.add_new_setup)
@@ -297,8 +302,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         origin = get_combo_data(self.setup_dialog.origin_combo)
         clearance = self.setup_dialog.clearance_spinbox.value()
         program_number = self.setup_dialog.program_number_spinbox.value()
-        setup_id = self.setup_dialog.setup_id_input.text()
-
+        setup_id = self.setup_dialog.setup_id_edit.text()
         setup = Setup(name, machine.id, origin, clearance, program_number, setup_id)
         self.controller.current_camo_file.setups.append(setup)
         self.controller.build_file_tree_model()
@@ -317,11 +321,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
     def show_feature_dialog(self):
         if len(self.controller.current_camo_file.setups) < 1:
-            no_setup_message = qw.QMessageBox()
-            no_setup_message.setWindowTitle('Error')
-            no_setup_message.setText('Please add setup')
-            no_setup_message.setIcon(no_setup_message.Critical)
-            no_setup_message.exec_()
+            show_error_message('Error', 'Please add setup')
             return
         self.feature_dialog = FeatureDialog(self.controller)
 
@@ -360,11 +360,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         filtered_list = [feature for feature in self.controller.feature_list.features if
                          feature.feature_type.feature_type == 'Slotting']
         if len(filtered_list) < 1:
-            message = qw.QMessageBox()
-            message.setWindowTitle('Error')
-            message.setText('Please add Slot to database Features')
-            message.setIcon(message.Critical)
-            message.exec_()
+            show_error_message('Error', 'Please add Slot to database Features')
             return
         self.show_feature_dialog()
         if self.feature_dialog:
@@ -455,11 +451,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             diameter = float(diameter)
             assert diameter > 0
         except:
-            message = qw.QMessageBox()
-            message.setWindowTitle('Error')
-            message.setText('No diameter given')
-            message.setIcon(message.Critical)
-            message.exec_()
+            show_error_message('Error', 'No diameter given')
             return
         circles = [entity for entity in self.controller.current_camo_file.dxf_doc.modelspace().entity_space.entities
                    if entity.DXFTYPE == 'CIRCLE']

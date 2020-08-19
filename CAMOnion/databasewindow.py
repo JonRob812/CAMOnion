@@ -37,8 +37,6 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
         self.remove_machine_button.clicked.connect(self.delete_machine)
         self.edit_machine_button.clicked.connect(self.edit_machine)
 
-
-
         self.editor_tool = None
         self.editor_feature = None
         self.editor_op = None
