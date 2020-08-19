@@ -1,29 +1,53 @@
-# Foobar
+# CAMOnion
 
-Foobar is a Python library for dealing with word pluralization.
+CAMOnion is a small CAD/CAM platform for simple feature based G-code generation.
+Tool, Features, Operations, Machines and Post Formats stored in an SQL database. 
 
-## Installation
+Any sql database is supported, the first time running it will prompt for a URL.  
+The format for the URL is [found here](https://docs.sqlalchemy.org/en/13/core/engines.html#database-urls).
+(Example sqlite url "sqlite:///C:/REPO/CAMOnion/camo.db") To build new empty sqlite database configure the file build_db.py
+with desired location and run it. 
+The database will need to be populated before any code can parts can be programmed.
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+## Environment and Installation
+
+Be sure python 3.8 is installed an set in PATH
 
 ```bash
-pip install foobar
+git clone --recurse-submodules https://github.com/JonRob812/CAMOnion
+cd CAMOnion
+python -m venv venv
+venv\Scripts\activate.bat
+pip install -f requirements.txt
+```
+
+Building DB file (SQLITE)
+
+```bash
+python build-db.py
 ```
 
 ## Usage
 
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
+```bash
+venv\Scripts\activate.bat
+python main.py
 ```
+
+## EXE and Installer
+Configure Makefile for file locations, Install Inno Setup and add to path. Configure CAMOnion.spec file. To make exe
+run 
+```bash
+ make exe
+```
+or to make installer run (need Inno Setup)
+```bash\
+make installer
+``` 
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
