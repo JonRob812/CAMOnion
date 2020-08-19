@@ -1,0 +1,21 @@
+altgraph==0.17
+certifi==2020.6.20
+chardet==3.0.4
+ezdxf==0.14a0
+future==0.18.2
+idna==2.10
+mysqlclient==2.0.1
+pefile==2019.4.18
+pyinstaller @ https://github.com/pyinstaller/pyinstaller/archive/develop.zip
+pyinstaller-hooks-contrib==2020.6
+pyparsing==3.0.0a2
+pyqb==0.2.4
+PyQt5==5.15.0
+PyQt5-sip==12.8.0
+PyQt5-stubs==5.14.2.2
+pywin32-ctypes==0.2.0
+requests==2.24.0
+six==1.15.0
+SQLAlchemy==1.3.18
+urllib3==1.25.10
+xmltodict==0.12.0
