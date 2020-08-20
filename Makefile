@@ -2,7 +2,7 @@ APP = CAMOnion
 UI_SRC_DIR = designer
 
 RESOURCE_QRC = resources.qrc
-CAMO_RESOURCES_DIR = $(APP)/resources/
+CAMO_RESOURCES_DIR = $(APP)/resources
 CAMO_RESOURCES = $(CAMO_RESOURCES_DIR)/camo_resources.py
 BUILD_DIST = dist/CAMOnion
 INSTALLER_FILE = installer/getCAMO.exe

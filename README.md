@@ -19,6 +19,10 @@ cd CAMOnion
 python -m venv venv
 venv\Scripts\activate.bat
 pip install -r requirements.txt
+mkdir CAMOnion\resources\
+cp BreezeStyleSheets\breeze_resources.py CAMOnion\resources\breeze_resources.py
+make resource
+
 ```
 
 Building DB file (SQLITE)
