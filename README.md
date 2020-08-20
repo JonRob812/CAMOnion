@@ -18,7 +18,7 @@ git clone --recurse-submodules https://github.com/JonRob812/CAMOnion
 cd CAMOnion
 python -m venv venv
 venv\Scripts\activate.bat
-pip install -f requirements.txt
+pip install -r requirements.txt
 ```
 
 Building DB file (SQLITE)
@@ -38,7 +38,7 @@ python main.py
 Configure Makefile for file locations, Install Inno Setup and add to path. Configure CAMOnion.spec file. To make exe
 run 
 ```bash
- make exe
+make exe
 ```
 or to make installer run (need Inno Setup)
 ```bash\
