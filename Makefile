@@ -2,7 +2,8 @@ APP = CAMOnion
 UI_SRC_DIR = designer
 
 RESOURCE_QRC = resources.qrc
-CAMO_RESOURCES = $(APP)/resources/camo_resources.py
+CAMO_RESOURCES_DIR = $(APP)/resources/
+CAMO_RESOURCES = $(CAMO_RESOURCES_DIR)/camo_resources.py
 BUILD_DIST = dist/CAMOnion
 INSTALLER_FILE = installer/getCAMO.exe
 UI_SRC_FILES = $(wildcard $(UI_SRC_DIR)/*.ui)
@@ -24,6 +25,7 @@ resource: $(CAMO_RESOURCES)
 
 $(CAMO_RESOURCES) : $(RESOURCE_QRC)
 	rm -f $@
+	touch $(CAMO_RESOURCES_DIR)
 	pyrcc5 -o $@ $<
 
 .PHONY: deploy
