@@ -20,10 +20,13 @@ python -m venv venv
 venv\Scripts\activate.bat
 pip install -r requirements.txt
 mkdir CAMOnion\resources\
+mkdir CAMOnion\ui
 cp BreezeStyleSheets\breeze_resources.py CAMOnion\resources\breeze_resources.py
 make resource
-
+make ui
 ```
+
+remove line 30 and line 66 from CAMOnion/app.py (that is for quickbase integration)
 
 Building DB file (SQLITE)
 
