@@ -24,7 +24,7 @@ pip install -r requirements.txt
 Building DB file (SQLITE)
 
 ```bash
-python build-db.py
+python build_db.py
 ```
 
 ## Usage
