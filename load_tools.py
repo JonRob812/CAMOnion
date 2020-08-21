@@ -3,7 +3,7 @@ from CAMOnion.database.tables import *
 from sqlalchemy.orm import sessionmaker
 import os
 
-database_file = 'camo.db'
+database_file = '_camo_.db'
 #
 # if database_file in os.listdir('.'):
 #     os.remove(database_file)
