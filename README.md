@@ -7,7 +7,7 @@ Any sql database is supported, the first time running it will prompt for a URL.
 The format for the URL is [found here](https://docs.sqlalchemy.org/en/13/core/engines.html#database-urls).
 (Example sqlite url "sqlite:///C:/REPO/CAMOnion/camo.db") To build new empty sqlite database configure the file build_db.py
 with desired location and run it. 
-The database will need to be populated before any code can parts can be programmed.
+The database will need to be populated before parts can be programmed.
 
 ## Environment and Installation
 
