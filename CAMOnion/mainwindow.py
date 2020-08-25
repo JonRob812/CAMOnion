@@ -14,6 +14,7 @@ from CAMOnion.dialogs.origindialog import OriginDialog
 from CAMOnion.widgets.positionwidget import PositionWidget
 from CAMOnion.dialogs.setupdialog import SetupDialog
 from CAMOnion.dialogs.featuredialog import FeatureDialog
+from CAMOnion.dialogs.geopalettedialog import GeoPaletteDialog
 from CAMOnion.dialogs.errormessage import show_error_message
 from CAMOnion.widgets.facewidget import FaceWidget
 from CAMOnion.widgets.drillwidget import DrillWidget
@@ -61,7 +62,8 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.save_nc_button.clicked.connect(self.save_nc_file)
         self.actionPost.triggered.connect(self.post_file)
         self.actionSet_DB.triggered.connect(self.controller.show_connect_dialog)
-
+        self.actionGeometry_Palette.triggered.connect(self.show_geometry_palette)
+        self.geometry_palette_dialog = None
         self.origin_dialog = None
         self.setup_dialog = None
         self.feature_dialog = None
@@ -113,6 +115,11 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         for entity in msp:
             self.all_dxf_entities[str(entity)] = entity
 
+    def show_geometry_palette(self):
+        self.geometry_palette_dialog = GeoPaletteDialog()
+        self.geometry_palette_dialog.show()
+
+
     def show_r_click_tree_menu(self, point):
         self.right_click_point = point
         self.tree_r_click_menu = qw.QMenu()
@@ -131,7 +138,6 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         return index, node
 
     def edit_tree_item(self, ):
-
         _, node = self.get_right_clicked_tree_item()
         if node.type == ct.OSetup:
             self.show_edit_setup_dialog(node._data[1])

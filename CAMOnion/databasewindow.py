@@ -4,7 +4,7 @@ from CAMOnion.ui.camo_database_window_ui import Ui_databaseWindow
 from CAMOnion.operationwindow import OperationWindow
 from CAMOnion.utils import CNCCalc
 from CAMOnion.database.tables import CamoOp
-
+from CAMOnion.dialogs.errormessage import show_error_message
 
 class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
 
@@ -279,7 +279,8 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
     def populate_feature_list_widget(self):
         self.feature_list.clear()
         if self.controller.feature_list:
-            features = self.controller.feature_list.features
+            features = sorted(self.controller.feature_list.features, key=lambda x: x.name)
+            features = sorted(features, key=lambda x: x.feature_type.feature_type)
             for i, feature in enumerate(features):
                 self.feature_list.addItem(FeatureListWidgetItem(feature))
             self.feature_list.repaint()
@@ -325,7 +326,12 @@ class databaseWindow(qw.QMainWindow, Ui_databaseWindow):
             self.feature_op_list.repaint()
 
     def set_rpm(self):
-        tool = self.operation_window.op_tool_list.selectedItems()[0].tool
+        try:
+            selected_tool = self.operation_window.op_tool_list.selectedItems()[0].tool
+        except IndexError:
+            show_error_message('Tool', 'Please select a Tool')
+            return
+        tool = selected_tool
         sfpm = self.operation_window.sfpm_input.text()
         if sfpm == '':
             return

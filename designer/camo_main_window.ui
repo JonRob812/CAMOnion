@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1273</width>
-     <height>21</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -217,6 +217,7 @@
    <addaction name="separator"/>
    <addaction name="actionNew_Origin"/>
    <addaction name="actionNew_Setup"/>
+   <addaction name="actionGeometry_Palette"/>
    <addaction name="separator"/>
    <addaction name="actionPost"/>
    <addaction name="actionSend_Tool_List"/>
@@ -363,6 +364,11 @@
   <action name="actionSet_DB">
    <property name="text">
     <string>Set DB</string>
+   </property>
+  </action>
+  <action name="actionGeometry_Palette">
+   <property name="text">
+    <string>Geometry Palette</string>
    </property>
   </action>
  </widget>

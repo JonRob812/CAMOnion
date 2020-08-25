@@ -40,7 +40,6 @@ for table in tables:
         session.add(local_obj)
 
 
-
 session.commit()
 
 
