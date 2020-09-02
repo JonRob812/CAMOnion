@@ -1125,3 +1125,268 @@ INFO:ezdxf:creating ACAD_SCALELIST dictionary
 INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
 INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
 INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): schurmanmfg.quickbase.com:443
+DEBUG:urllib3.connectionpool:https://schurmanmfg.quickbase.com:443 "POST /db/bnmac5wdg HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://schurmanmfg.quickbase.com:443 "POST /db/bnmac5wdg HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://schurmanmfg.quickbase.com:443 "POST /db/bnmac5wdg HTTP/1.1" 200 None
+DEBUG:urllib3.connectionpool:https://schurmanmfg.quickbase.com:443 "POST /db/bnmac5wdg HTTP/1.1" 200 None
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init

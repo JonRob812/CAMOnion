@@ -36,7 +36,7 @@ class CodeBuilder:
 
     def process_operations(self):
         for i, op in enumerate(self.operations):
-            op.machine = self.session.query(Machine).filter(Machine.id == self.operations[0].part_feature.setup.machine_id).one()
+            op.machine = self.machine
             op.points = self.get_operation_points(op)
             op.cutting_code = code_engines[op.base_operation.camo_op.function](op)
             op.start_code = self.get_start_code(op, i)
@@ -47,10 +47,10 @@ class CodeBuilder:
         spindle = get_spindle(op)
         x, y = set_start_location(op)
         if self.current_tool != op.base_operation.tool.tool_number:
-            self.set_current_tool(op, i)
             self.get_tool_start_code(code, op, spindle, x, y)
         else:
             self.get_op_start_code(code, op, spindle)
+        self.set_current_tool(op, i)
         return ''.join(code)
 
     def set_current_tool(self, op, i):

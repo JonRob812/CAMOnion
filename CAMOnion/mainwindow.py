@@ -23,6 +23,8 @@ from CAMOnion.widgets.depthwidget import DepthWidget
 from CAMOnion.core.widget_tools import get_combo_data, get_combo_data_index, clearLayout, get_depths_from_layout
 from CAMOnion.core import Setup, Origin, PartFeature, PartOperation, CamoOp, CamoItemTypes as ct
 from CAMOnion.engine import CodeBuilder
+from CAMOnion.database.tables import *
+
 
 import ezdxf
 from ezdxf.addons.drawing import Frontend, RenderContext
@@ -80,6 +82,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
         self.editor_setup = None
         self.editor_origin = None
+        self.editor_feature = None
 
         self.renderer = PyQtBackend(self.scene)
         self.doc = None
@@ -91,10 +94,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.hidden_dialogs = []
 
     def post_file(self):
-
         self.get_all_dxf_entities()
         self.controller.populate_operation_list()
-        if hasattr(self.controller.current_camo_file,'operations'):
+        if hasattr(self.controller.current_camo_file, 'operations'):
             if len(self.controller.current_camo_file.operations) > 0:
                 code_builder = CodeBuilder(self.controller)
                 self.controller.nc_output = code_builder.post()
@@ -104,7 +106,10 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             show_error_message('No features', 'please have active setup with features to post NC code')
 
     def save_nc_file(self):
-        filename, _ = qw.QFileDialog.getSaveFileName(self, 'Save .NC File', filter='*.NC')
+        default_filename = self.controller.current_camo_file.filename
+        if default_filename:
+            default_filename = default_filename.replace('.camo', '.NC')
+        filename, _ = qw.QFileDialog.getSaveFileName(self, 'Save .NC File', default_filename, filter='*.NC')
         if filename:
             with open(filename, 'w') as file:
                 file.writelines(self.nc_output_edit.toPlainText())
@@ -118,7 +123,6 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
     def show_geometry_palette(self):
         self.geometry_palette_dialog = GeoPaletteDialog()
         self.geometry_palette_dialog.show()
-
 
     def show_r_click_tree_menu(self, point):
         self.right_click_point = point
@@ -143,6 +147,9 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             self.show_edit_setup_dialog(node._data[1])
         elif node.type == ct.OOrigin:
             self.show_edit_origin_dialog(node._data[1])
+        elif node.type == ct.OFeature:
+            self.show_edit_feature_dialog(node._data[1])
+
         print(node)
 
     def delete_tree_item(self):
@@ -289,6 +296,12 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.setup_dialog.buttonBox.accepted.connect(self.add_new_setup)
         self.setup_dialog.show()
 
+    def show_edit_feature_dialog(self, feature):
+        self.feature_dialog = FeatureDialog(self.controller)
+        self.editor_feature = feature
+        base_feature = self.controller.session.query(Feature).filter(Feature.id == self.editor_feature.base_feature_id).one()
+        print(base_feature)
+
     def show_edit_setup_dialog(self, setup):
         self.setup_dialog = SetupDialog(self.controller)
         self.editor_setup = setup
@@ -330,10 +343,8 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
             show_error_message('Error', 'Please add setup')
             return
         self.feature_dialog = FeatureDialog(self.controller)
-
         for setup in self.controller.current_camo_file.setups:
             self.feature_dialog.setup_combo.addItem(setup.name, setup)
-
         self.feature_dialog.buttonBox.rejected.connect(self.feature_dialog.reject)
         self.feature_dialog.base_feature_combo.currentIndexChanged.connect(self.populate_depth_inputs)
         self.feature_dialog.show()

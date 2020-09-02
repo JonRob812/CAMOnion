@@ -50,7 +50,6 @@ class PartFeature:
         return feature
 
 
-
 class PartOperation:
     def __init__(self, base_operation, part_feature):
         self.base_operation = base_operation
