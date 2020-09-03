@@ -39,4 +39,4 @@ def drill(op):
     if p is not None:
         p = str(round(float(p), 4))
     return op.machine.__dict__[code_format].format(code=g, depth=d, r_plane=.1, speed=s, feed=f, pitch=p,
-                                                      points=points, )
+                                                      points=points)

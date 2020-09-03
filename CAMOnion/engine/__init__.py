@@ -73,9 +73,11 @@ class CodeBuilder:
                      coolant='M8'))
 
     def get_op_start_code(self, code, op, spindle):
-        code.append(self.machine.op_start.format(x=round(op.points[0][0],4), y=round(op.points[0][1],4),
-                                                 spindle=spindle,
-                                                 clearance=op.part_feature.setup.clearance_plane))
+        code.append(self.machine.op_start.format
+                    (x=round(op.points[0][0], 4),
+                     y=round(op.points[0][1], 4),
+                     spindle=spindle,
+                     clearance=op.part_feature.setup.clearance_plane))
 
     def get_end_of_tool_code(self):
         code = []
@@ -112,14 +114,18 @@ class CodeBuilder:
         self.get_code_body()
         self.get_program_end_code()
 
-        for line in self.code:
+        for i, line in enumerate(self.code):
             print(line)
+            if line == '':
+                self.code.pop(i)
         return '\n'.join(self.code)
 
     def get_program_start_code(self):
-        self.code.append(
-            self.machine.program_start.format(program_number=self.program_number, program_comment=self.header_comment.upper(),
-                                              tool_list=self.tool_list, machine_name=self.machine.name.upper()))
+        self.code.append(self.machine.program_start.format
+                         (program_number=self.program_number,
+                          program_comment=self.header_comment.upper(),
+                          tool_list=self.tool_list,
+                          machine_name=self.machine.name.upper()))
 
     def get_code_body(self):
         for op in self.operations:
@@ -176,7 +182,8 @@ def all_points_from_lines(lines):
 def all_slot_points_from_lines(lines):
     points = []
     for line in lines:
-        points.append(((round(line.dxf.start[0], 4), round(line.dxf.start[1], 4)), (round(line.dxf.end[0], 4), round(line.dxf.end[1], 4))))
+        points.append(((round(line.dxf.start[0], 4), round(line.dxf.start[1], 4)),
+                       (round(line.dxf.end[0], 4), round(line.dxf.end[1], 4))))
     return points
 
 
