@@ -32,6 +32,7 @@ from ezdxf.addons.drawing.pyqt import PyQtBackend, CorrespondingDXFEntity, \
     CorrespondingDXFEntityStack
 from ezdxf.drawing import Drawing
 from ezdxf.addons import Importer
+from ezdxf.math import Vector
 
 from copy import copy
 
@@ -523,6 +524,13 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
         self.all_dxf_entities = {}
         for entity in self.model_space.entity_space:
             self.all_dxf_entities[str(entity)] = entity
+            if entity.DXFTYPE == "CIRCLE":
+                if hasattr(entity.dxf, 'extrusion'):
+                    print(entity.dxf.extrusion)
+                    if entity.dxf.extrusion[2] == -1:
+                        entity.dxf.extrusion = Vector(0,0,1)
+                        # entity.dxf.center = Vector(-(entity.dxf.center.x), -(entity.dxf.center.y), 0)
+
         self.draw_origin()
         self.apply_origin_to_scene()
 
