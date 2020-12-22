@@ -194,7 +194,7 @@ def all_slot_points_from_lines(lines):
 
 
 def get_spindle(op):
-    if op.base_operation.camo_op.feature_type.feature_type == 'Tap':
+    if op.base_operation.camo_op.op_type == 'Tap':
         return ''
     else:
         return f"M3 S{int(op.base_operation.fixed_speed(op.part_feature.setup.machine.max_rpm))}"
