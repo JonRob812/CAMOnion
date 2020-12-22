@@ -142,6 +142,9 @@ class Controller(qw.QApplication):
         node = index.internalPointer()
         print(node)
 
+    def update_machine(self):
+        active_setup = get_combo_data(self.main_window.position_widget.active_setup_combo)
+
     def populate_operation_list(self):
         self.current_camo_file.operations = []
         active_setup = get_combo_data(self.main_window.position_widget.active_setup_combo)

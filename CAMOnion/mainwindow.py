@@ -96,6 +96,7 @@ class MainWindow(qw.QMainWindow, Ui_MainWindow):
 
     def post_file(self):
         self.get_all_dxf_entities()
+        self.controller.update_machine()
         self.controller.populate_operation_list()
         if hasattr(self.controller.current_camo_file, 'operations'):
             if len(self.controller.current_camo_file.operations) > 0:

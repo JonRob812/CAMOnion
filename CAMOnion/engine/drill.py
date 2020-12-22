@@ -14,24 +14,24 @@ def drill(op):
         else:
             p = round(1 / float(op.base_operation.tool.pitch), 4)
         d = op.part_feature.depths[op.base_operation.camo_op.op_type]
-        s = str(int(op.base_operation.speed))
+        s = str(int(op.base_operation.fixed_speed(op.part_feature.setup.machine.max_rpm)))
         f = round(float(p) * float(s),4)
     elif op.base_operation.camo_op.op_type == 'Ream':
         code_format = 'drill_format'
         d = op.part_feature.depths['Ream']
-        f = op.base_operation.feed
+        f = op.base_operation.fixed_feed(op.part_feature.setup.machine.max_rpm)
         p = None
         s = None
     elif op.base_operation.camo_op.op_type == 'Countersink':
         code_format = 'drill_format'
         d = op.part_feature.depths[op.base_operation.camo_op.op_type]
-        f = op.base_operation.feed
+        f = op.base_operation.fixed_feed(op.part_feature.setup.machine.max_rpm)
         p = None
         s = None
     else:  # must be a Drill
         code_format = 'drill_format'
         d = op.part_feature.depths[op.base_operation.camo_op.op_type]
-        f = op.base_operation.feed
+        f = op.base_operation.fixed_feed(op.part_feature.setup.machine.max_rpm)
         p = None
         s = None
     if f is not None:

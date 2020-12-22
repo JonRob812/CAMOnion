@@ -30,7 +30,7 @@ def slot_rough(op):
         start_point = slot_path[0]
         tool_path = slot_path[1]
         code.append(f"G00 X{round(start_point[0],4)} Y{round(start_point[1],4)}")
-        code.append(f"G01 Z0 F{op.base_operation.feed:.2f}")
+        code.append(f"G01 Z0 F{op.base_operation.fixed_feed(op.part_feature.setup.machine.max_rpm):.2f}")
         for point in tool_path:
             code.append(f"X{round(point[0],4)} Y{round(point[1], 4)} Z{round(point[2], 4)}")
         code.append(f"G00 Z{op.part_feature.setup.clearance_plane:.2f}")
@@ -45,7 +45,7 @@ def slot_finish(op):
     for slot in op.tool_path:
         start_point = slot[0]
         code.append(f"G00 X{round(start_point[0], 4)} Y{round(start_point[1], 4)}")
-        code.append(f"G01 Z0 F{op.base_operation.feed:.2f}")
+        code.append(f"G01 Z0 F{op.base_operation.fixed_feed(op.part_feature.setup.machine.max_rpm):.2f}")
         for point in slot:
             code.append(f"X{round(point[0], 4)} Y{round(point[1], 4)} Z{op.part_feature.depths[op.base_operation.camo_op.op_type]}")
         code.append("G00 Z.1")

@@ -25,7 +25,7 @@ def face_rough(op):
             op.tool_path.append(point)
         x_positive = not x_positive
 
-    code = [f"G01 Z.015 F{float(op.base_operation.feed):.2f}"]
+    code = [f"G01 Z.015 F{float(op.base_operation.fixed_feed(op.part_feature.setup.machine.max_rpm)):.2f}"]
     for point in op.tool_path:
         code.append(f'G01 X{point[0]} Y{point[1]}')
     code.append(f'G00 Z{op.part_feature.setup.clearance_plane:.2f}')
@@ -56,7 +56,7 @@ def face_finish(op):
             op.tool_path.append(point)
         y_negative = not y_negative
 
-    code = [f"G01 Z0 F{float(op.base_operation.feed):.2f}"]
+    code = [f"G01 Z0 F{float(op.base_operation.fixed_feed(op.part_feature.setup.machine.max_rpm)):.2f}"]
     for point in op.tool_path:
         code.append(f'G01 X{point[0]} Y{point[1]}')
     code.append(f'G00 Z{op.part_feature.setup.clearance_plane:.2f}')

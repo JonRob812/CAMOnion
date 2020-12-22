@@ -25,7 +25,7 @@ resource: $(CAMO_RESOURCES)
 
 $(CAMO_RESOURCES) : $(RESOURCE_QRC)
 	rm -f $@
-	touch $(CAMO_RESOURCES_DIR)
+	touch $(CAMO_RESOURCES_DIR)/
 	pyrcc5 -o $@ $<
 
 .PHONY: deploy

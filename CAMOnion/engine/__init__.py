@@ -36,6 +36,11 @@ class CodeBuilder:
 
     def process_operations(self):
         for i, op in enumerate(self.operations):
+            print('op')
+            # if int(op.base_operation.speed) > int(op.part_feature.setup.machine.max_rpm):
+            #     op.base_operation.feed = float(op.base_operation.feed) * (
+            #                 int(op.part_feature.setup.machine.max_rpm) / int(op.base_operation.speed))
+            #     op.base_operation.speed = int(op.part_feature.setup.machine.max_rpm)
             op.machine = self.machine
             op.points = self.get_operation_points(op)
             op.cutting_code = code_engines[op.base_operation.camo_op.function](op)
@@ -108,6 +113,7 @@ class CodeBuilder:
         return points
 
     def post(self):
+
         self.code = []
 
         self.get_program_start_code()
@@ -191,7 +197,7 @@ def get_spindle(op):
     if op.base_operation.camo_op.feature_type.feature_type == 'Tap':
         return ''
     else:
-        return f"M3 S{int(op.base_operation.speed)}"
+        return f"M3 S{int(op.base_operation.fixed_speed(op.part_feature.setup.machine.max_rpm))}"
 
 
 def set_start_location(op):

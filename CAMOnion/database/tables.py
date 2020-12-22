@@ -90,6 +90,18 @@ class Operation(Base):
     feed = Column(Numeric)
     speed = Column(Numeric)
 
+    def fixed_speed(self, max_rpm):
+        if self.speed > max_rpm:
+            return max_rpm
+        else:
+            return self.speed
+
+    def fixed_feed(self, max_rpm):
+        if self.speed > max_rpm:
+            return self.feed * (max_rpm / self.speed)
+        else:
+            return self.feed
+
 
 class CamoOp(Base):
     __tablename__ = 'camo_ops'
