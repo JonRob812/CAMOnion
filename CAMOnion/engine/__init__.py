@@ -197,7 +197,7 @@ def get_spindle(op):
     if op.base_operation.camo_op.op_type == 'Tap':
         return ''
     else:
-        return f"M3 S{int(op.base_operation.fixed_speed(op.part_feature.setup.machine.max_rpm))}"
+        return f"M3 S{int(op.base_operation.fixed_speed(op.machine.max_rpm))}"
 
 
 def set_start_location(op):

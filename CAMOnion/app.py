@@ -5,7 +5,7 @@ import argparse
 import logging
 
 import json
-import pyqb
+
 
 from PyQt5 import QtWidgets as qw
 from PyQt5 import QtCore, QtGui
@@ -27,7 +27,7 @@ from CAMOnion.database.tables import *
 from CAMOnion.file import CamoFile, open_camo_file, save_camo_file
 from CAMOnion.core import PartFeature, PartOperation
 from CAMOnion.core.widget_tools import get_combo_data
-from CAMOnion.qb_client import qb_client
+
 
 from CAMOnion.dialogs.errormessage import show_error_message
 
@@ -63,7 +63,7 @@ class Controller(qw.QApplication):
         # self.sql_connected = False
         self.current_camo_file = CamoFile()
 
-        self.qb_client = qb_client
+
 
         self.engine = None
         self.connection = None

@@ -1,5 +1,4 @@
 from PyQt5.QtCore import QFile, QTextStream
-import CAMOnion.resources.breeze_resources
 
 
 class Style:

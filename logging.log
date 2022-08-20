@@ -2435,3 +2435,233 @@ INFO:ezdxf:creating ACAD_SCALELIST dictionary
 INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
 INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
 INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Import of 3DSOLID(#126) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#12C) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#131) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#136) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#13B) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#142) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#148) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#150) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#158) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#15E) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#163) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#168) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#170) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#176) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#17B) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#180) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#186) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#18C) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#192) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#198) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#19D) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1A3) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1D9) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#211) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#221) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1AB) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1B0) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1B5) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1BF) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1C4) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1C9) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1CF) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1E3) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1EC) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1F1) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1F6) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#1FB) not supported
+DEBUG:ezdxf:Import of 3DSOLID(#201) not supported
+DEBUG:ezdxf:Discarding already existing entry "0" of layers table.
+DEBUG:ezdxf:Discarding already existing entry "Continuous" of linetypes table.
+DEBUG:ezdxf:Discarding already existing entry "ByLayer" of linetypes table.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+DEBUG:ezdxf:Import of 3DSOLID(#77) not supported
+DEBUG:ezdxf:Discarding already existing entry "Continuous" of linetypes table.
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+INFO:ezdxf:creating ACAD_COLOR dictionary
+DEBUG:ezdxf:Discarding already existing entry "0" of layers table.
+INFO:ezdxf:did not write header var $INTERFEREOBJVS, value is None.
+INFO:ezdxf:did not write header var $INTERFEREVPVS, value is None.
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init
+DEBUG:ezdxf:Creating ROOT dictionary.
+INFO:ezdxf:creating ACAD_COLOR dictionary
+INFO:ezdxf:creating ACAD_GROUP dictionary
+INFO:ezdxf:creating ACAD_LAYOUT dictionary
+INFO:ezdxf:creating ACAD_MATERIAL dictionary
+INFO:ezdxf:creating ACAD_MLEADERSTYLE dictionary
+INFO:ezdxf:creating ACAD_MLINESTYLE dictionary
+INFO:ezdxf:creating ACAD_PLOTSETTINGS dictionary
+INFO:ezdxf:creating ACAD_PLOTSTYLENAME dictionary
+INFO:ezdxf:creating ACAD_SCALELIST dictionary
+INFO:ezdxf:creating ACAD_TABLESTYLE dictionary
+INFO:ezdxf:creating ACAD_VISUALSTYLE dictionary
+INFO:root:end init

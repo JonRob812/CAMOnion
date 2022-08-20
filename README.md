@@ -48,7 +48,7 @@ run
 make exe
 ```
 or to make installer run (need Inno Setup)
-```bash\
+```bash
 make installer
 ``` 
 
